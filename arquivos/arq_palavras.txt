@@ -12,7 +12,7 @@ drone;objeto;
 ededrom;objeto;
 espelho;objeto;
 esponja;objeto;
-escada ;objeto;
+escada;objeto;
 fritadeira;objeto;
 furadeira;objeto;
 geladeira;objeto;
