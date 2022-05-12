@@ -11,12 +11,18 @@ Desenvolvido por:
 //BIBLIOTECAS
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
+#include <time.h>
 #include <Windows.h>
 
 //ESCOPO DAS FUNÇÕES
 void animacao_inicio();
 char menu();
 int teste_inteiro(char num);
+void sorteador_palavras();
+
+//VARIÁVEIS GLOBAIS
+char nome[100]="", dica[100]="";
 
 
 //CÓDIGO
@@ -37,7 +43,12 @@ int main()
             break;
 
             case 2:
-                /* code */
+                sorteador_palavras();
+	            printf("\nPalavra Sorteada:\n");
+	            puts(nome);
+	            printf("\nDica:\n");
+	            puts(dica);
+                system("pause");
             break;
 
             case 3:
@@ -149,8 +160,62 @@ char menu(){  //menu do jogo
         printf("\n\n   Por favor, digite um numero: ");
         scanf("%s", &op);
     }
-    novo_op=atoi(op); //converte caracter para inteiro
+    novo_op=atoi(op); //Converte caracter para inteiro
 
     return (novo_op);
+}
+
+//MODO CONTRA O COMPUTADOR
+void sorteador_palavras(){    //Sorteia uma palavra aleatória de um arquivo
+	char caractere="", temp[100]="";
+	int quantidade_linhas=1, verificando_linha=1, linha_sorteada=0;
+
+    //Limpando conteúdo das variaveis
+    strcpy(nome,"");
+    strcpy(dica,"");
+    
+	//Abrindo arquivo para leitura
+	FILE *arquivo_palavras;
+	arquivo_palavras=fopen("arquivos/arq_palavras.txt","r");
+	if(arquivo_palavras == NULL) {
+		printf("\nERRO ao abrir o arquivo de palavras\n");
+		return 1;
+	}
+
+	//Contagem de linhas do arquivo
+	while ((caractere=fgetc(arquivo_palavras)) != EOF) {				
+		if (caractere == '\n') {
+			quantidade_linhas++;
+		}	
+	}
+	printf("Linhas Totais do Arquivo: %d\n", quantidade_linhas);
+
+	//Sorteando uma linha aleatória do arquivo
+	srand(time(NULL));
+	linha_sorteada = (rand() % quantidade_linhas)+1;
+	printf("Linha Sorteada: %d \n", linha_sorteada);
+
+	//Posicionando para a linha que foi sorteada
+	rewind (arquivo_palavras);
+	while ((caractere=fgetc(arquivo_palavras)) != EOF) {				
+		if (caractere == '\n') {
+			verificando_linha++;
+			if (verificando_linha == linha_sorteada) {
+				break;
+			}
+		}	
+	}
+
+	//Leitura do nome
+	while ((caractere=fgetc(arquivo_palavras)) != ';') {
+		temp[0]=caractere;				
+		strcat(nome, temp);			//Copia caracteres no final da string nome
+	}
+
+	//Leitura da dica
+	while ((caractere=fgetc(arquivo_palavras)) != ';') {
+		temp[0]=caractere;				
+		strcat(dica, temp);			//Copia caracteres no final da string dica
+	}
 }
 
