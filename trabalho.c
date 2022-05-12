@@ -59,6 +59,14 @@ int main()
                 /* code */
             break;
 
+            case 5:
+                /* code */
+            break;
+
+            case 6:
+                /* code */
+            break;
+
             case 0:
                 system("cls");
                 printf("\n\n\t*------------------------------------------------------------*    \n\n");
@@ -130,22 +138,26 @@ char menu(){  //menu do jogo
     int novo_op;
 
     system("cls");
-    printf (" \n\t*------------------------------------------------------------*");
-    printf (" \n\t|                                                            |");
-    printf (" \n\t|                DIGITE A OPCAO DESEJADA                     |");
-    printf (" \n\t|                                                            |");
-    printf (" \n\t|                                                            |");
-    printf (" \n\t|                    0  -  SAIR                              |");
-    printf (" \n\t|                                                            |");
-    printf (" \n\t|                    1  -  INICIAR JOGO                      |");
-    printf (" \n\t|                                                            |");
-    printf (" \n\t|                    2  -  MODO CONTRA O COMPUTADOR          |");
-    printf (" \n\t|                                                            |");
-    printf (" \n\t|                    3  -  COMO JOGAR                        |");
-    printf (" \n\t|                                                            |");
-    printf (" \n\t|                    4  -  DESENVOLVEDORES                   |");
-    printf (" \n\t|                                                            |");
-    printf (" \n\t*------------------------------------------------------------*");
+    printf (" \n\t*----------------------------------------------------------------*");
+    printf (" \n\t|                                                                |");
+    printf (" \n\t|                DIGITE A OPCAO DESEJADA                         |");
+    printf (" \n\t|                                                                |");
+    printf (" \n\t|                                                                |");
+    printf (" \n\t|                    0  -  SAIR                                  |");
+    printf (" \n\t|                                                                |");
+    printf (" \n\t|                    1  -  INICIAR JOGO                          |");
+    printf (" \n\t|                                                                |");
+    printf (" \n\t|                    2  -  MODO CONTRA O COMPUTADOR              |");
+    printf (" \n\t|                                                                |");
+    printf (" \n\t|                    3  -  COMO JOGAR                            |");
+    printf (" \n\t|                                                                |");
+    printf (" \n\t|                    4  -  DESENVOLVEDORES                       |");
+    printf (" \n\t|                                                                |");
+    printf (" \n\t|                    5  -  HISTORICO DE JOGADAS                  |");
+    printf (" \n\t|                                                                |");
+    printf (" \n\t|                    6  -  VISUALISAR PALAVRAS DO SORTEADOR      |");
+    printf (" \n\t|                                                                |");
+    printf (" \n\t*-----------------------------------------------------------------*");
     printf (" \n \n \n                                                          ");
     scanf("%s", &op);
 
