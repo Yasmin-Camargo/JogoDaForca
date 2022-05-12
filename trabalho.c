@@ -15,25 +15,23 @@ Desenvolvido por:
 
 //ESCOPO DAS FUNÇÕES
 void animacao_inicio();
-int menu();
+char menu();
+int teste_inteiro(char num);
 
 
 //CÓDIGO
 int main()
 {
-    int op_menu=1;
+    int op_menu;
 
     system("color FC"); //CORES Fundo: Branco; Letra: Vermelho claro
     system("title JOGO DA FORCA"); //Altera o nome da janela
 
     animacao_inicio();
 
-    while(op_menu!=0){
-        op_menu = menu();
+    do{
+        op_menu = menu(); //Opção menu
         switch (op_menu) {
-            case 0:
-            break;
-
             case 1:
                 /* code */
             break;
@@ -50,20 +48,27 @@ int main()
                 /* code */
             break;
 
+            case 0:
+                system("cls");
+                printf("\n\n\t*------------------------------------------------------------*    \n\n");
+                printf ("\n   \t\t\t       Obrigado por jogar  :)                                   ");
+                printf("\n\n\t*------------------------------------------------------------*\n\n\n\n");
+                system("pause");
+            break;
+
             default:
                 system("cls");
+                printf("\n\n");
+                printf("      \\_(o_o)_/  \n");
+                printf("         | |     \n");
+                printf("         / \\    ");
                 printf("\n\n  OPCAO INVALIDA, POR FAVOR TENTE NOVAMENTE \n\n\n");
                 system("pause");
             break;
-        }    
-    }
+        }
+    }while(op_menu!=0);
 
-    system("cls");
-    printf("\n\n\t*------------------------------------------------------------*    \n\n");
-    printf ("\n   \t\t\t       Obrigado por jogar  :)                                   ");
-    printf("\n\n\t*------------------------------------------------------------*\n\n\n\n");
-    system("pause");
-
+    return 0;
     
 }
 
@@ -109,8 +114,9 @@ void animacao_inicio(){ //animação quando o usuário entra no jogo
 }
 
 
-int menu(){  //menu do jogo
-    int op;
+char menu(){  //menu do jogo
+    char op[10]="";
+    int novo_op;
 
     system("cls");
     printf (" \n\t*------------------------------------------------------------*");
@@ -130,7 +136,21 @@ int menu(){  //menu do jogo
     printf (" \n\t|                                                            |");
     printf (" \n\t*------------------------------------------------------------*");
     printf (" \n \n \n                                                          ");
-    scanf("%d", &op);
+    scanf("%s", &op);
 
-    return (op);
+    //Tratamento de Erros: Usuário só pode digitar números (sem o programa dar erro)
+    while(isdigit(*op)==0){
+        system("cls");
+        printf("\n\n");
+        printf("      \\_(o_o)_/  \n");
+        printf("         | |     \n");
+        printf("         / \\    ");
+        printf("\n\n   VOCE DIGITOU UM CARACTER ");
+        printf("\n\n   Por favor, digite um numero: ");
+        scanf("%s", &op);
+    }
+    novo_op=atoi(op); //converte caracter para inteiro
+
+    return (novo_op);
 }
+
