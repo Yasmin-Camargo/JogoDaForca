@@ -1,13 +1,16 @@
 # JogoDaForca
 Programa em c desenvolvido como forma de avaliação da disciplina de Programação de Computadores do segundo semestre de CC
 
-Desenvolvido por:
-    BIANCA BEPPLER DULLIUS
-    CAROLINE SOUZA CAMARGO
-    MARIA JULIA DUARTE LORENZONI
-    YASMIN SOUZA CAMARGO
+<b> DESENVOLVIDO POR: </b>
+<br>
+    BIANCA BEPPLER DULLIUS, CAROLINE SOUZA CAMARGO, MARIA JULIA DUARTE LORENZONI E YASMIN SOUZA CAMARGO
 
-ATENÇÃO!
+## Como Executar
+-> Para executar o código não esquecer de compilar pelo terminal: 
+    
+    gcc main.c boneco_forca.c -o main
+
+## Atenção:
 O aquivo arq_palavras.txt deve possuir a seguinte estrutura: 
 - Deve conter apenas letras minúsculas
 - As palavras não deverão ser acentuadas 
