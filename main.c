@@ -1,4 +1,5 @@
-//ATENÇÃO: para executar o código não esquecer de compilar pelo terminal: gcc main.c boneco_forca.c -o main
+//  ATENÇÃO: para executar o código não esquecer de compilar pelo terminal: 
+//  gcc main.c ./bibliotecas/boneco_forca.c -o main
 
 
 /*
@@ -12,7 +13,7 @@ Desenvolvido por:
 */
 
 //BIBLIOTECAS
-#include "boneco_forca.h"
+#include "./bibliotecas/boneco_forca.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -35,37 +36,44 @@ int main()
 {
     int op_menu;
 
-    system("color FC"); //CORES Fundo: Branco; Letra: Vermelho claro
+    system("color 5F"); //CORES Fundo: Branco; Letra: Roxo
     system("title JOGO DA FORCA"); //Altera o nome da janela
 
     animacao_inicio();
-
     do{
         op_menu = menu(); //Opção menu
         switch (op_menu) {
             case 1:
                 //Opções boneco se movendo:
                 incializacao_boneco();
+                printf("\n\n");
                 system("cls");
                 boneco1();
+                printf("\n\n");
                 system("pause");
                 system("cls");
                 boneco2();
+                printf("\n\n");
                 system("pause");
                 system("cls");
                 boneco3();
+                printf("\n\n");
                 system("pause");
                 system("cls");
                 boneco4();
+                printf("\n\n");
                 system("pause");
                 system("cls");
                 boneco5();
+                printf("\n\n");
                 system("pause");
                 system("cls");
                 boneco6();
+                printf("\n\n");
                 system("pause");
                 system("cls");
                 boneco7();
+                printf("\n\n");
                 system("pause");
             break;
 
@@ -117,6 +125,8 @@ int main()
     return 0;
     
 }
+
+//-----------------------------------------------------------------------------------------
 
 //FUNÇÕES:
 void animacao_inicio(){ //animação quando o usuário entra no jogo
@@ -260,6 +270,7 @@ void sorteador_palavras(){    //Sorteia uma palavra aleatória de um arquivo
 		temp[0]=caractere;				
 		strcat(dica, temp);			//Copia caracteres no final da string dica
 	}
-    return; 
+
+    fclose(arquivo_palavras); 
 }
 

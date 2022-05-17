@@ -8,7 +8,7 @@ Programa em c desenvolvido como forma de avaliação da disciplina de Programaç
 ## Como Executar
 -> Para executar o código não esquecer de compilar pelo terminal: 
     
-    gcc main.c boneco_forca.c -o main
+    gcc main.c ./bibliotecas/boneco_forca.c -o main
 
 ## Atenção:
 O aquivo arq_palavras.txt deve possuir a seguinte estrutura: 
