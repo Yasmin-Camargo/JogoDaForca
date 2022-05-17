@@ -25,7 +25,9 @@ Desenvolvido por:
 //ESCOPO DAS FUNÇÕES
 void animacao_inicio();
 char menu();
+char sub_menu_iniciar_jogo();
 void sorteador_palavras();
+
 
 //VARIÁVEIS GLOBAIS
 char nome[100], dica[100];
@@ -34,7 +36,7 @@ char nome[100], dica[100];
 //CÓDIGO
 int main()
 {
-    int op_menu;
+    int op_menu, op_menu2;
 
     system("color 5F"); //CORES Fundo: Branco; Letra: Roxo
     system("title JOGO DA FORCA"); //Altera o nome da janela
@@ -44,46 +46,60 @@ int main()
         op_menu = menu(); //Opção menu
         switch (op_menu) {
             case 1:
-                //Opções boneco se movendo:
-                incializacao_boneco();
-                printf("\n\n");
-                system("cls");
-                boneco1();
-                printf("\n\n");
-                system("pause");
-                system("cls");
-                boneco2();
-                printf("\n\n");
-                system("pause");
-                system("cls");
-                boneco3();
-                printf("\n\n");
-                system("pause");
-                system("cls");
-                boneco4();
-                printf("\n\n");
-                system("pause");
-                system("cls");
-                boneco5();
-                printf("\n\n");
-                system("pause");
-                system("cls");
-                boneco6();
-                printf("\n\n");
-                system("pause");
-                system("cls");
-                boneco7();
-                printf("\n\n");
-                system("pause");
+                op_menu2 = 1;
+                while (op_menu2 != 0) {
+                    op_menu2 = sub_menu_iniciar_jogo();
+                    if (op_menu2 == 0) {
+                        /* code */
+                    } else if (op_menu2==1) {
+                        //Opções boneco se movendo:
+                        incializacao_boneco();
+                        printf("\n\n");
+                        system("cls");
+                        boneco1();
+                        printf("\n\n");
+                        system("pause");
+                        system("cls");
+                        boneco2();
+                        printf("\n\n");
+                        system("pause");
+                        system("cls");
+                        boneco3();
+                        printf("\n\n");
+                        system("pause");
+                        system("cls");
+                        boneco4();
+                        printf("\n\n");
+                        system("pause");
+                        system("cls");
+                        boneco5();
+                        printf("\n\n");
+                        system("pause");
+                        system("cls");
+                        boneco6();
+                        printf("\n\n");
+                        system("pause");
+                        system("cls");
+                        boneco7();
+                        printf("\n\n");
+                        system("pause");
+                    } else if (op_menu2 == 2){
+                        sorteador_palavras();
+                        printf("Palavra Sorteada  ");
+                        puts(nome);
+                        printf("Dica:  ");
+                        puts(dica);
+                        printf("\n");
+                        system("pause");
+                    } else {
+                        printf("Digite uma opcao valida");
+                    }
+                }
+                
             break;
 
             case 2:
-                sorteador_palavras();
-	            printf("\nPalavra Sorteada:\n");
-	            puts(nome);
-	            printf("\nDica:\n");
-	            puts(dica);
-                system("pause");
+               
             break;
 
             case 3:
@@ -98,13 +114,9 @@ int main()
                 /* code */
             break;
 
-            case 6:
-                /* code */
-            break;
-
             case 0:
                 system("cls");
-                printf("\n\n\t*------------------------------------------------------------*    \n\n");
+                printf("\n\n\t*------------------------------------------------------------*    \n");
                 printf ("\n   \t\t\t       Obrigado por jogar  :)                                   ");
                 printf("\n\n\t*------------------------------------------------------------*\n\n\n\n");
                 system("pause");
@@ -185,15 +197,13 @@ char menu(){  //menu do jogo
     printf (" \n\t|                                                                |");
     printf (" \n\t|                    1  -  INICIAR JOGO                          |");
     printf (" \n\t|                                                                |");
-    printf (" \n\t|                    2  -  MODO CONTRA O COMPUTADOR              |");
+    printf (" \n\t|                    2  -  COMO JOGAR                            |");
     printf (" \n\t|                                                                |");
-    printf (" \n\t|                    3  -  COMO JOGAR                            |");
+    printf (" \n\t|                    3  -  DESENVOLVEDORES                       |");
     printf (" \n\t|                                                                |");
-    printf (" \n\t|                    4  -  DESENVOLVEDORES                       |");
+    printf (" \n\t|                    4  -  HISTORICO DE JOGADAS                  |");
     printf (" \n\t|                                                                |");
-    printf (" \n\t|                    5  -  HISTORICO DE JOGADAS                  |");
-    printf (" \n\t|                                                                |");
-    printf (" \n\t|                    6  -  VISUALISAR PALAVRAS DO SORTEADOR      |");
+    printf (" \n\t|                    5  -  VISUALISAR PALAVRAS DO SORTEADOR      |");
     printf (" \n\t|                                                                |");
     printf (" \n\t*-----------------------------------------------------------------*");
     printf (" \n \n \n                                                          ");
@@ -216,6 +226,44 @@ char menu(){  //menu do jogo
     return (novo_op);
 }
 
+
+
+char sub_menu_iniciar_jogo(){  //submenu do jogo
+    char op2[10]="";
+    int novo_op2;
+
+    system("cls");
+    printf (" \n\t*----------------------------------------------------------------*");
+    printf (" \n\t|                                                                |");
+    printf (" \n\t|                DIGITE A OPCAO DESEJADA                         |");
+    printf (" \n\t|                                                                |");
+    printf (" \n\t|                                                                |");
+    printf (" \n\t|                    0  -  VOLTAR                                |");
+    printf (" \n\t|                                                                |");
+    printf (" \n\t|                    1  -  MODO CONTRA UMA PESSOA                |");
+    printf (" \n\t|                                                                |");
+    printf (" \n\t|                    2  -  MODO CONTRA O COMPUTADOR              |");
+    printf (" \n\t|                                                                |");
+    printf (" \n\t*-----------------------------------------------------------------*");
+    printf (" \n \n \n                                                          ");
+    scanf("%s", &op2);
+
+    //Tratamento de Erros: Usuário só pode digitar números (sem o programa dar erro)
+
+    while(isdigit(*op2)==0){
+        printf("\n\n");
+        printf("      \\_(o_o)_/  \n");
+        printf("         | |     \n");
+        printf("         / \\    ");
+        printf("\n\n   VOCE DIGITOU UM CARACTER ");
+        printf("\n\n   Por favor, digite um numero: ");
+        scanf("%s", &op2);
+    }
+    novo_op2=atoi(op2); //Converte caracter para inteiro
+
+    return (novo_op2);
+}
+
 //MODO CONTRA O COMPUTADOR
 void sorteador_palavras(){    //Sorteia uma palavra aleatória de um arquivo
 	char caractere='a', temp[100];
@@ -225,7 +273,6 @@ void sorteador_palavras(){    //Sorteia uma palavra aleatória de um arquivo
     strcpy(nome,"");
     strcpy(dica,"");
     strcpy(temp,"");
-    
     
 	//Abrindo arquivo para leitura
 	FILE *arquivo_palavras;
@@ -271,6 +318,7 @@ void sorteador_palavras(){    //Sorteia uma palavra aleatória de um arquivo
 		strcat(dica, temp);			//Copia caracteres no final da string dica
 	}
 
-    fclose(arquivo_palavras); 
+    fclose(arquivo_palavras);
+    return; 
 }
 
