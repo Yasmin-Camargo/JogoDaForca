@@ -1,3 +1,6 @@
+//ATENÇÃO: para executar o código não esquecer de compilar pelo terminal: gcc main.c boneco_forca.c -o main
+
+
 /*
 Trabalho Final - Programação de computadores
 
@@ -9,20 +12,22 @@ Desenvolvido por:
 */
 
 //BIBLIOTECAS
+#include "boneco_forca.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
 #include <Windows.h>
+#include <ctype.h>
+
 
 //ESCOPO DAS FUNÇÕES
 void animacao_inicio();
 char menu();
-int teste_inteiro(char num);
 void sorteador_palavras();
 
 //VARIÁVEIS GLOBAIS
-char nome[100]="", dica[100]="";
+char nome[100], dica[100];
 
 
 //CÓDIGO
@@ -39,7 +44,29 @@ int main()
         op_menu = menu(); //Opção menu
         switch (op_menu) {
             case 1:
-                /* code */
+                //Opções boneco se movendo:
+                incializacao_boneco();
+                system("cls");
+                boneco1();
+                system("pause");
+                system("cls");
+                boneco2();
+                system("pause");
+                system("cls");
+                boneco3();
+                system("pause");
+                system("cls");
+                boneco4();
+                system("pause");
+                system("cls");
+                boneco5();
+                system("pause");
+                system("cls");
+                boneco6();
+                system("pause");
+                system("cls");
+                boneco7();
+                system("pause");
             break;
 
             case 2:
@@ -130,6 +157,7 @@ void animacao_inicio(){ //animação quando o usuário entra no jogo
     printf ("\n \t   ##       ######   ##  ##   ######   ##  ##                  ");
     printf (" \n \n                                                            ");
     Sleep(1200);
+    return; 
 }
 
 
@@ -162,6 +190,7 @@ char menu(){  //menu do jogo
     scanf("%s", &op);
 
     //Tratamento de Erros: Usuário só pode digitar números (sem o programa dar erro)
+
     while(isdigit(*op)==0){
         system("cls");
         printf("\n\n");
@@ -179,19 +208,21 @@ char menu(){  //menu do jogo
 
 //MODO CONTRA O COMPUTADOR
 void sorteador_palavras(){    //Sorteia uma palavra aleatória de um arquivo
-	char caractere="", temp[100]="";
+	char caractere='a', temp[100];
 	int quantidade_linhas=1, verificando_linha=1, linha_sorteada=0;
 
     //Limpando conteúdo das variaveis
     strcpy(nome,"");
     strcpy(dica,"");
+    strcpy(temp,"");
+    
     
 	//Abrindo arquivo para leitura
 	FILE *arquivo_palavras;
 	arquivo_palavras=fopen("arquivos/arq_palavras.txt","r");
 	if(arquivo_palavras == NULL) {
 		printf("\nERRO ao abrir o arquivo de palavras\n");
-		return 1;
+		
 	}
 
 	//Contagem de linhas do arquivo
@@ -229,5 +260,6 @@ void sorteador_palavras(){    //Sorteia uma palavra aleatória de um arquivo
 		temp[0]=caractere;				
 		strcat(dica, temp);			//Copia caracteres no final da string dica
 	}
+    return; 
 }
 
