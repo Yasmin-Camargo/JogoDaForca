@@ -20,6 +20,7 @@ Desenvolvido por:
 #include <time.h>
 #include <Windows.h>
 #include <ctype.h>
+#include <locale.h>
 
 
 //ESCOPO DAS FUNÇÕES
@@ -37,9 +38,9 @@ char nome[100], dica[100];
 int main()
 {
     int op_menu, op_menu2;
-
     system("color 5F"); //CORES Fundo: Branco; Letra: Roxo
     system("title JOGO DA FORCA"); //Altera o nome da janela
+    setlocale(LC_ALL, "Portuguese"); //habilita a acentuação para o português
 
     animacao_inicio();
     do{
@@ -85,7 +86,7 @@ int main()
                         system("pause");
                     } else if (op_menu2 == 2){
                         sorteador_palavras();
-                        printf("Palavra Sorteada  ");
+                        printf("Palavra Sorteada ");
                         puts(nome);
                         printf("Dica:  ");
                         puts(dica);
