@@ -28,6 +28,7 @@ void animacao_inicio();
 char menu();
 char sub_menu_iniciar_jogo();
 void sorteador_palavras();
+void como_jogar();
 
 
 //VARIÁVEIS GLOBAIS
@@ -100,7 +101,7 @@ int main()
             break;
 
             case 2:
-               
+               como_jogar();
             break;
 
             case 3:
@@ -323,3 +324,19 @@ void sorteador_palavras(){    //Sorteia uma palavra aleatória de um arquivo
     return; 
 }
 
+//Texto explicando como jogar
+void como_jogar(){
+    system("cls");
+    printf("\n\n\t\t\t\t\t\tCOMO JOGAR");
+    printf (" \n\n *--------------------------------------------------------------------------------------------------------*");
+    printf ("\n \n   => O objetivo deste jogo e descobrir uma palavra adivinhando as letras que ela possui. ");
+    printf (" \n\n   => A cada rodada, o jogador pode escolher uma letra que suspeite fazer parte da palavra. ");
+    printf (" \n      Caso a palavra contenha esta letra, sera mostrado em que posicoes ela esta. ");
+    printf (" \n      Caso esta letra nao exista na palavra, sera retirada uma parte do corpo do boneco do jogador. ");
+    printf (" \n\n   => Em qualquer momento o jogador pode tentar adivinhar a palavra, mas se errar retira-se algo ao desenho");
+    printf (" \n\n   => Se todas as partes do corpo do boneco forem retiradas, o jogador perde a partida.");
+    printf (" \n\n   => O jogador vence quando descobrir a palavra (antes de retirar todas partes do boneco)");
+    printf (" \n\n\n *--------------------------------------------------------------------------------------------------------*\n");
+    printf("\n\t\t\t\t\t\t\t\t\tBom Jogo!\n\n\n");
+    system("pause");
+}
