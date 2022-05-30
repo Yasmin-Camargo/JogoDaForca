@@ -29,6 +29,7 @@ char menu();
 char sub_menu_iniciar_jogo();
 void sorteador_palavras();
 void como_jogar();
+void desenvolvedores();
 
 
 //VARIÁVEIS GLOBAIS
@@ -105,7 +106,7 @@ int main()
             break;
 
             case 3:
-                /* code */
+                desenvolvedores();
             break;
 
             case 4:
@@ -338,5 +339,32 @@ void como_jogar(){
     printf (" \n\n   => O jogador vence quando descobrir a palavra (antes de retirar todas partes do boneco)");
     printf (" \n\n\n *--------------------------------------------------------------------------------------------------------*\n");
     printf("\n\t\t\t\t\t\t\t\t\tBom Jogo!\n\n\n");
+    system("pause");
+}
+
+//Mostrando desenvolvedores do jogo
+void desenvolvedores(){
+    system("cls");
+    
+    printf("\n\n  ESTE PROGRAMA FOI DESENVOLVIDO POR:");
+    printf (" \n\n   -------------------------------------------------------\n");
+    printf("  |   BIANCA BEPPLER DULLIUS                              |\n");
+    printf("  |    Email para contato: bianca.bd@inf.ufpel.edu.br     |");
+    printf (" \n   -------------------------------------------------------");
+
+    printf (" \n\n   -------------------------------------------------------\n");
+    printf("  |   CAROLINE SOUZA CAMARGO                              |\n");
+    printf("  |    Email para contato: caroline.sc@inf.ufpel.edu.br   |");
+    printf (" \n   -------------------------------------------------------");
+
+    printf (" \n\n   -------------------------------------------------------\n");
+    printf("  |   MARIA JULIA DUARTE LORENZONI                        |\n");
+    printf("  |    Email para contato: maria.jdl@inf.ufpel.edu.br     |");
+    printf (" \n   -------------------------------------------------------");
+
+    printf (" \n\n   -------------------------------------------------------\n");
+    printf("  |   YASMIN SOUZA CAMARGO                                |\n");
+    printf("  |    Email para contato: yasmin.sc@inf.ufpel.edu.br     |");
+    printf (" \n   -------------------------------------------------------\n\n\n ");
     system("pause");
 }
