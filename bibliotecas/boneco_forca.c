@@ -1,3 +1,5 @@
+//Biblioteca própia com as versões do boneco forca
+
 #include "boneco_forca.h"
 #include <stdio.h>
 #include <string.h>
