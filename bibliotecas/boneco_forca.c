@@ -112,7 +112,7 @@ void boneco6(){
     boneco[6]= " ***                              \n";
     boneco[7]= " ***                              \n";
     boneco[8]= " ***                              \n";
-    boneco[9]= " ***                               Jogada 5 de 6\n";
+    boneco[9]= " ***                               Jogada 6 de 6\n";
     printf("%s", boneco[cont]);
     cont++;
     while(cont<=20){
