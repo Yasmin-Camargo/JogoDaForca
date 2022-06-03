@@ -36,7 +36,7 @@ void mostrar_palavra_secreta();
 // CÓDIGO
 int main()
 {
-    int op_menu, op_menu2;
+    int op_menu, op_menu2, op_menu3;
     system("color 5F");              // CORES Fundo: Branco; Letra: Roxo
     system("title JOGO DA FORCA");   // Altera o nome da janela
     setlocale(LC_ALL, "Portuguese"); // habilita a acentuação para o português
@@ -157,8 +157,23 @@ int main()
             break;
 
         case 5:
-            sorteador();
-            break;
+                op_menu3 = 1;
+                while (op_menu3 != 0) {
+                    op_menu3 = sub_menu_arquivo();
+                    if (op_menu3 == 0) {
+                        /* code */
+
+                    } else if (op_menu3==1) {
+                        sorteador();
+                        
+                    } else if (op_menu3==2) {
+                        inserir_palavra();
+                
+                    } else {
+                        printf("Digite uma opcao valida");
+                    }
+                }
+               break;
             break;
 
         case 0:

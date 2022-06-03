@@ -16,6 +16,8 @@ char sub_menu_iniciar_jogo();
 void como_jogar();
 void desenvolvedores();
 void sorteador();
+char sub_menu_arquivo();
+void inserir_palavra();
 
 
 void animacao_inicio(){ //animação quando o usuário entra no jogo
@@ -80,7 +82,7 @@ char menu(){  //menu do jogo
     printf (" \n\t|                                                                |");
     printf (" \n\t|                    4  -  HISTORICO DE JOGADAS                  |");
     printf (" \n\t|                                                                |");
-    printf (" \n\t|                    5  -  VISUALISAR PALAVRAS DO SORTEADOR      |");
+    printf (" \n\t|                    5  -  ARQUIVO DE PALAVRAS                   |");
     printf (" \n\t|                                                                |");
     printf (" \n\t*-----------------------------------------------------------------*");
     printf (" \n \n \n                                                          ");
@@ -407,6 +409,109 @@ system("cls");
     printf (" \n\t|  praça                           praia                         |");
     printf (" \n\t|  padaria                                                       |");
     printf (" \n\t|                                                                |");
-    printf (" \n\t*-----------------------------------------------------------------*");
+    printf (" \n\t*-----------------------------------------------------------------*\n");
  system("pause");
+}
+
+char sub_menu_arquivo(){  //submenu do jogo ARQUIVO
+    char op2[10]="";
+    int novo_op2;
+
+    system("cls");
+    printf (" \n\t*----------------------------------------------------------------*");
+    printf (" \n\t|                                                                |");
+    printf (" \n\t|                DIGITE A OPCAO DESEJADA                         |");
+    printf (" \n\t|                                                                |");
+    printf (" \n\t|                                                                |");
+    printf (" \n\t|                    0  -  VOLTAR                                |");
+    printf (" \n\t|                                                                |");
+    printf (" \n\t|                    1  -  VISUALISAR PALAVRAS DO SORTEADOR      |");
+    printf (" \n\t|                                                                |");
+    printf (" \n\t|                    2  -  ADICIONAR UMA PALAVRA                 |");
+    printf (" \n\t|                                                                |");
+    printf (" \n\t*-----------------------------------------------------------------*");
+    printf (" \n \n \n                                                          ");
+    scanf("%s", &op2);
+
+    //Tratamento de Erros: Usuário só pode digitar números (sem o programa dar erro)
+    while(isdigit(*op2)==0){
+        printf("\n\n");
+        printf("      \\_(o_o)_/  \n");
+        printf("         | |     \n");
+        printf("         / \\    ");
+        printf("\n\n   VOCE DIGITOU UM CARACTER ");
+        printf("\n\n   Por favor, digite um numero: ");
+        scanf("%s", &op2);
+    }
+    novo_op2=atoi(op2); //Converte caracter para inteiro
+
+    return (novo_op2);
+}
+
+//Função para inserir palavras no arquivo
+void inserir_palavra(){
+    char palavra_adicionada[100], dica_adicionada[100];
+    char caracter, palavra_lida[100], aux[3];
+    int gravar;
+    
+    //Inicializando variaveis
+    gravar=1; 
+    caracter=' ';
+    strcpy(palavra_lida," ");
+    strcpy(dica_adicionada," ");
+    strcpy(palavra_adicionada," ");
+    strcpy(aux," ");
+    
+    //Abrindo arquivo para escrita
+	FILE *arquivo_palavras;
+	arquivo_palavras=fopen("./arquivos/arq_palavras.txt","a+");
+	if(arquivo_palavras == NULL) {
+		printf("\nERRO ao abrir o arquivo de palavras\n");
+	}
+    
+    fflush(stdin);
+    system("cls");
+    printf("\n  Digite a palavra para ser adicionada no arquivo: ");
+    scanf("%[^\n]s", palavra_adicionada);
+   
+    fflush(stdin);
+    printf("\n  Digite a dica da palavra: ");
+    scanf("%[^\n]s", dica_adicionada);
+    fflush(stdin);
+ 
+    
+    //Teste para verificar se a palavra já existe  no arquivo
+    while( (caracter=fgetc(arquivo_palavras))!= EOF ){	
+        aux[0]=caracter;
+        		
+		if(caracter == ';'){
+            if(strcmp(palavra_adicionada, palavra_lida)==0){
+                gravar=0;
+            }
+            strcpy(palavra_lida,"");
+        }
+        else if (caracter != '\n'){
+            strcat(palavra_lida, aux);	
+        }
+	}
+
+    if(gravar == 1){ //Adiciona palavra e dica no arquivo
+        fprintf(arquivo_palavras,"\n");
+        fprintf(arquivo_palavras,palavra_adicionada);
+        fprintf(arquivo_palavras,";");
+
+        fprintf(arquivo_palavras,dica_adicionada);
+        fprintf(arquivo_palavras,";");
+
+        system("cls");
+        printf("\n\n  Palavra adicionada com sucesso\n\n");
+        system("pause");
+    }
+    else{
+        system("cls");
+        printf("\n\n  ERRO!!");
+        printf("\n  Esta palavra ja existe no arquivo\n\n");
+        system("pause");
+    }
+    fclose(arquivo_palavras);
 }
