@@ -112,7 +112,8 @@ int main()
             break;
 
             case 5:
-                /* code */
+                sorteador();
+               break;
             break;
 
             case 0:
