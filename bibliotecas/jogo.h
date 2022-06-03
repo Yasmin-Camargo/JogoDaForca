@@ -6,5 +6,6 @@ char menu();
 char sub_menu_iniciar_jogo();
 void como_jogar();
 void desenvolvedores();
+void sorteador();
 
 #endif
