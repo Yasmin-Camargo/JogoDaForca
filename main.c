@@ -58,17 +58,22 @@ int main()
                 }
                 else if (op_menu2 == 1)
                 {
+                    // Limpando conteúdo das variaveis 
+                    strcpy(palavra_secreta, "\0");
+                    strcpy(palavra, "\0");
+                    erros=0;
+
                     printf("Digite a palavra secreta: ");
-                    scanf("%s", palavra);
+                    fflush(stdin);                          //Limpeza da entrada padrão
+                    scanf("%[^\n]s", palavra);              //Leitura com espaços " "
+                    fflush(stdin);  
                     printf("Digite a dica: ");
-                    scanf("%s", dica);
+                    scanf("%[^\n]s", dica);
 
                     mostrar_palavra_secreta();
-                    system("pause");
 
                     while (1)
                     {
-
                         // system("cls");
                         percorrer_palavra_secreta();
                         // mostrar_boneco(erros);
@@ -255,14 +260,15 @@ void sorteador_palavras()
 
 void mostrar_palavra_secreta()
 {
-    for (int i = 0; i < (strlen(palavra) - 1); i++)
+    for (int i=0; i<(strlen(palavra)); i++)
     {
-        char caracter = palavra[i];
-        if (strcmp(&caracter, " ") == 0 || strcmp(&caracter, "-") == 0)
+        //Casos especiais
+        if (palavra[i] == ' ' ){
+            palavra_secreta[i] = ' ';
+        } else if (palavra[i] == '-')
         {
             palavra_secreta[i] = '-';
-        }
-        else
+        } else
         {
             palavra_secreta[i] = '_';
         }
@@ -276,20 +282,20 @@ void mostrar_palavra_secreta()
 
 void percorrer_palavra_secreta()
 {
+    fflush(stdin);
     system("cls");
     printf("\nDica: %s\n", dica);
     for (int a = 0; a < strlen(palavra_secreta); a++)
     {
         printf("%c ", palavra_secreta[a]);
     }
-    printf("\nDigite uma letra : ");
+    printf("\n\nDigite uma letra: ");
     scanf("%c", &letra);
     int count = 1; // 1=sim 0=não
 
-    for (int i = 0; i < strlen(palavra); i++)
+    for (int i=0; i<strlen(palavra); i++)
     {
-        char caracter = palavra[i];
-        if (strcmp(&caracter, &letra) == 0)
+        if (palavra[i] == letra)
         { // certo
             palavra_secreta[i] = letra;
             count = 0;
@@ -300,6 +306,5 @@ void percorrer_palavra_secreta()
     {
         erros++;
     }
-    system("pause");
     // return;
 }
