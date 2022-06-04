@@ -77,7 +77,53 @@ int main()
                         // system("cls");
                         percorrer_palavra_secreta();
                         // mostrar_boneco(erros);
+                        incializacao_boneco();
+                        printf("\n\n");
+                        system("cls");
+                        
+                        if (erros == 1)
+                        {
+                            boneco1(); 
+                            printf("\n\n");
+                            system("pause");
+                            system("cls");
+                        }
+                        if (erros == 2)
+                        {
+                            boneco2(); 
+                            printf("\n\n");
+                            system("pause");
+                            system("cls");
 
+                        }
+                        if (erros == 3)
+                        {
+                            boneco3(); 
+                            printf("\n\n");
+                            system("pause");
+                            system("cls");
+                        }
+                        if (erros == 4)
+                        {
+                            boneco4(); 
+                            printf("\n\n");
+                            system("pause");
+                            system("cls");
+                        }
+                        if (erros == 5)
+                        {
+                            boneco5(); 
+                            printf("\n\n");
+                            system("pause");
+                            system("cls");
+                        }
+                        if (erros == 6)
+                        {
+                            boneco6(); 
+                            printf("\n\n");
+                            system("pause");
+                            system("cls");
+                        }
                         if (strcmp(palavra, palavra_secreta) == 0)
                         {
                             // GANHOU!
