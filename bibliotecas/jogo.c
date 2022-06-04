@@ -19,7 +19,7 @@ void desenvolvedores();
 void sorteador();
 char sub_menu_arquivo();
 void inserir_palavra();
-
+void sorteador_palavras();
 void modo_contra_pessoa(char palavra_obtida[100], char dica_obtida[100]);
 void percorrer_palavra_secreta();
 void mostra_dica_palavra();
@@ -458,6 +458,81 @@ char sub_menu_arquivo(){  //submenu do jogo ARQUIVO
     return (novo_op2);
 }
 
+//-----------------------------------------------------------------------------------------
+// MODO CONTRA O COMPUTADOR
+void sorteador_palavras()
+{ // Sorteia uma palavra aleatória de um arquivo
+    char caractere = 'a', temp[100];
+    int quantidade_linhas = 1, verificando_linha = 1, linha_sorteada = 0;
+
+    // Limpando conteúdo das variaveis
+    strcpy(nome, "");
+    strcpy(dica, "");
+    strcpy(temp, "");
+
+    // Abrindo arquivo para leitura
+    FILE *arquivo_palavras;
+    arquivo_palavras = fopen("arquivos/arq_palavras.txt", "r");
+    if (arquivo_palavras == NULL)
+    {
+        printf("\nERRO ao abrir o arquivo de palavras\n");
+    }
+
+    // Contagem de linhas do arquivo
+    while ((caractere = fgetc(arquivo_palavras)) != EOF)
+    {
+        if (caractere == '\n')
+        {
+            quantidade_linhas++;
+        }
+    }
+    printf("Linhas Totais do Arquivo: %d\n", quantidade_linhas);
+
+    // Sorteando uma linha aleatória do arquivo
+    srand(time(NULL));
+    linha_sorteada = (rand() % quantidade_linhas) + 1;
+    printf("Linha Sorteada: %d \n", linha_sorteada);
+
+    // Posicionando para a linha que foi sorteada
+    rewind(arquivo_palavras);
+    while ((caractere = fgetc(arquivo_palavras)) != EOF)
+    {
+        if (caractere == '\n')
+        {
+            verificando_linha++;
+            if (verificando_linha == linha_sorteada)
+            {
+                break;
+            }
+        }
+    }
+
+    // Leitura do nome
+    while ((caractere = fgetc(arquivo_palavras)) != ';')
+    {
+        temp[0] = caractere;
+        strcat(nome, temp); // Copia caracteres no final da string nome
+    }
+
+    // Leitura da dica
+    while ((caractere = fgetc(arquivo_palavras)) != ';')
+    {
+        temp[0] = caractere;
+        strcat(dica, temp); // Copia caracteres no final da string dica
+    }
+
+    fclose(arquivo_palavras);
+
+    printf("Palavra Sorteada ");
+    puts(nome);
+    printf("Dica:  ");
+    puts(dica);
+    printf("\n");
+    system("pause");
+    return;
+}
+
+
 //Função para inserir palavras no arquivo
 void inserir_palavra(){
     char palavra_adicionada[100], dica_adicionada[100];
@@ -527,7 +602,7 @@ void inserir_palavra(){
 }
 
 
-//--------------------------------------------------------------
+//-----------------------------------------------------------------------------------------
 //MODO CONTRA PESSOA
 void modo_contra_pessoa(char palavra_obtida[100], char dica_obtida[100]){
     strcpy(palavra_secreta, "\0");
