@@ -9,6 +9,7 @@ void boneco4();
 void boneco5();
 void boneco6();
 void boneco7();
+void boneco8();
 
 
 #endif

@@ -33,6 +33,8 @@ int erros = 0;
 void sorteador_palavras();
 void percorrer_palavra_secreta();
 void mostrar_palavra_secreta();
+void mostra_dica_palavra();
+
 // CÓDIGO
 int main()
 {
@@ -77,62 +79,15 @@ int main()
                         // system("cls");
                         percorrer_palavra_secreta();
                         // mostrar_boneco(erros);
-                        incializacao_boneco();
-                        printf("\n\n");
-                        system("cls");
                         
-                        if (erros == 1)
-                        {
-                            boneco1(); 
-                            printf("\n\n");
-                            system("pause");
-                            system("cls");
-                        }
-                        if (erros == 2)
-                        {
-                            boneco2(); 
-                            printf("\n\n");
-                            system("pause");
-                            system("cls");
-
-                        }
-                        if (erros == 3)
-                        {
-                            boneco3(); 
-                            printf("\n\n");
-                            system("pause");
-                            system("cls");
-                        }
-                        if (erros == 4)
-                        {
-                            boneco4(); 
-                            printf("\n\n");
-                            system("pause");
-                            system("cls");
-                        }
-                        if (erros == 5)
-                        {
-                            boneco5(); 
-                            printf("\n\n");
-                            system("pause");
-                            system("cls");
-                        }
-                        if (erros == 6)
-                        {
-                            boneco6(); 
-                            printf("\n\n");
-                            system("pause");
-                            system("cls");
-                        }
                         if (strcmp(palavra, palavra_secreta) == 0)
                         {
                             // GANHOU!
-                            printf("\nA palavra secreta é ");
-                            for (int i = 0; i < strlen(palavra_secreta); i++)
-                            {
-                                printf("%c", palavra_secreta[i]);
-                            }
-                            printf("\nPARABENS, VOCE VENCEU!\n");
+                            system("cls");
+                            printf("\n\n       PARABENS!!! VOCE VENCEU!\n\n");
+                            boneco8();
+                            printf("\n\n");
+                            printf("\tPalavra: %s\n\n", palavra);
                             break;
                         }
                         // verifica se perdeu
@@ -140,42 +95,16 @@ int main()
                         {
                             // perdeu
                             //  Mostrar boneco de game over
-                            printf("\nJogo perdido. A palavra secreta era %s.\n", palavra);
+                            system("cls");
+                            printf("\n\n       VOCE PERDEU! :(\n\n");
+                            boneco7();
+                            printf("\n\n");
+                            printf("\tA palavra secreta era %s", palavra);
+                            printf("\n\n");
                             break;
                         }
                     };
                     system("pause");
-                    // // Opções boneco se movendo:
-                    // incializacao_boneco();
-                    // printf("\n\n");
-                    // system("cls");
-                    // boneco1();
-                    // printf("\n\n");
-                    // system("pause");
-                    // system("cls");
-                    // boneco2();
-                    // printf("\n\n");
-                    // system("pause");
-                    // system("cls");
-                    // boneco3();
-                    // printf("\n\n");
-                    // system("pause");
-                    // system("cls");
-                    // boneco4();
-                    // printf("\n\n");
-                    // system("pause");
-                    // system("cls");
-                    // boneco5();
-                    // printf("\n\n");
-                    // system("pause");
-                    // system("cls");
-                    // boneco6();
-                    // printf("\n\n");
-                    // system("pause");
-                    // system("cls");
-                    // boneco7();
-                    // printf("\n\n");
-                    // system("pause");
                 }
                 else if (op_menu2 == 2)
                 {
@@ -334,24 +263,60 @@ void mostrar_palavra_secreta()
             palavra_secreta[i] = '_';
         }
     }
-    printf("\nDica: %s\n", dica);
-    for (int a = 0; a < strlen(palavra_secreta); a++)
-    {
-        printf("%c ", palavra_secreta[a]);
-    }
 }
 
 void percorrer_palavra_secreta()
 {
     fflush(stdin);
     system("cls");
-    printf("\nDica: %s\n", dica);
-    for (int a = 0; a < strlen(palavra_secreta); a++)
+    if (erros == 0)
     {
-        printf("%c ", palavra_secreta[a]);
+        system("cls");
+        incializacao_boneco();
+        printf("\n\n");
     }
-    printf("\n\nDigite uma letra: ");
+    else if (erros == 1)
+    {
+        system("cls");
+        boneco1();
+        printf("\n\n");
+    }
+    else if (erros == 2)
+    {
+        system("cls");
+        boneco2();
+        printf("\n\n");
+
+    }
+    else if (erros == 3)
+    {
+        system("cls");
+        boneco3();
+        printf("\n\n");
+    }
+    else if (erros == 4)
+    {
+        system("cls");
+        boneco4();
+        printf("\n\n");
+    }
+    else if (erros == 5)
+    {
+        system("cls");
+        boneco5();
+        printf("\n\n");
+    }
+    else if (erros == 6)
+    {
+        system("cls");
+        boneco6();
+        printf("\n\n");
+    }
+    
+    mostra_dica_palavra();
+    printf("   Digite uma letra: ");
     scanf("%c", &letra);
+
     int count = 1; // 1=sim 0=não
 
     for (int i=0; i<strlen(palavra); i++)
@@ -368,4 +333,14 @@ void percorrer_palavra_secreta()
         erros++;
     }
     // return;
+}
+
+void mostra_dica_palavra(){
+    printf(" \tDica: %s\t\t", dica);
+    for (int a = 0; a < strlen(palavra_secreta); a++)
+    {
+        printf("%c ", palavra_secreta[a]);
+    }
+    printf("\n\n\n");
+    
 }
