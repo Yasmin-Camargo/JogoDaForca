@@ -14,5 +14,6 @@ void modo_contra_pessoa(char palavra_obtida[100], char dica_obtida[100]);
 void percorrer_palavra_secreta();
 void mostra_dica_palavra();
 void mostrar_palavra_secreta();
+void excluir_palavra();
 
 #endif

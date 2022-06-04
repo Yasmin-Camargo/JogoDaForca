@@ -105,6 +105,9 @@ int main()
                     } else if (op_menu3==2) {
                         inserir_palavra();
                 
+                    } else if (op_menu3==3) {
+                        excluir_palavra();
+                
                     } else {
                         printf("Digite uma opcao valida");
                     }

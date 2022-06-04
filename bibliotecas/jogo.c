@@ -24,6 +24,7 @@ void modo_contra_pessoa(char palavra_obtida[100], char dica_obtida[100]);
 void percorrer_palavra_secreta();
 void mostra_dica_palavra();
 void mostrar_palavra_secreta();
+void excluir_palavra();
 
 //VARIAVEIS GLOBAIS
 char nome[100], dica[100], palavra[100], palavra_secreta[100], letras_digitadas[100];
@@ -194,6 +195,7 @@ void desenvolvedores(){
     printf (" \n   -------------------------------------------------------\n\n\n ");
     system("pause");
 }
+
 void sorteador(){
 system("cls");
 
@@ -439,6 +441,8 @@ char sub_menu_arquivo(){  //submenu do jogo ARQUIVO
     printf (" \n\t|                                                                |");
     printf (" \n\t|                    2  -  ADICIONAR UMA PALAVRA                 |");
     printf (" \n\t|                                                                |");
+    printf (" \n\t|                    3  -  EXCLUIR UMA PALAVRA                   |");
+    printf (" \n\t|                                                                |");
     printf (" \n\t*-----------------------------------------------------------------*");
     printf (" \n \n \n                                                          ");
     scanf("%s", &op2);
@@ -598,6 +602,120 @@ void inserir_palavra(){
         printf("\n  Esta palavra ja existe no arquivo\n\n");
         system("pause");
     }
+    fclose(arquivo_palavras);
+}
+
+//Função para excluir uma palavra do arquivo
+void excluir_palavra(){
+    char palavra_excluida[100];
+    char caracter, palavra_lida[100], aux[3];
+    int excluir, quantidade_linhas=1, linha_excluir, cont_linhas=1;
+    
+    //Inicializando variaveis
+    excluir=0; 
+    caracter=' ';
+    strcpy(palavra_lida,"");
+    strcpy(palavra_excluida," ");
+    strcpy(aux," ");
+    
+    //Abrindo arquivo para escrita e leitura
+	FILE *arquivo_palavras;
+	arquivo_palavras=fopen("./arquivos/arq_palavras.txt","r");
+	if(arquivo_palavras == NULL) 
+    {
+		printf("\nERRO ao abrir o arquivo de palavras\n");
+	}
+
+    //Abrindo arquivo temporário para escrita
+    FILE *arquivo_palavras_temp;
+    arquivo_palavras_temp=fopen("./arquivos/arq_palavras_temp.txt","w+");
+    if(arquivo_palavras_temp == NULL) 
+    {
+        printf("\nERRO ao abrir o arquivo de palavras\n");
+    }
+
+    // Contagem de linhas do arquivo
+    while ((caracter = fgetc(arquivo_palavras)) != EOF){
+        if (caracter == '\n') {
+            quantidade_linhas++;
+        }
+    }
+    
+    fflush(stdin);
+    system("cls");
+    printf("\n  Digite a palavra para ser excluida do arquivo: ");
+    scanf("%[^\n]s", palavra_excluida);
+    fflush(stdin);
+   
+    //Teste para verificar se a palavra já existe no arquivo
+    //A função também salva uma cópia do arquivo original em um temporário sem a linha a palavra excluida
+    rewind(arquivo_palavras);
+    while( (caracter=fgetc(arquivo_palavras))!= EOF ) {
+        aux[0]=caracter;	
+		if(caracter == ';') {
+            if(strcmp(palavra_excluida, palavra_lida)==0) {     //Quando encontra uma palavra
+                excluir=1;
+                linha_excluir = cont_linhas;
+                caracter=fgetc(arquivo_palavras);
+                while ((caracter=fgetc(arquivo_palavras))!= ';')
+                {
+                    //Pula leitura da linha da palavra a ser excluida
+                }
+                caracter=fgetc(arquivo_palavras);
+            } else{
+                fprintf(arquivo_palavras_temp,palavra_lida);
+                fprintf(arquivo_palavras_temp,";");
+            }
+            strcpy(palavra_lida,"");
+        } 
+        else if (caracter == '\n') {
+            cont_linhas++;
+            if (cont_linhas == (quantidade_linhas)) {
+                //Não pode gravar o \n no arquivo
+            } else {
+                fprintf(arquivo_palavras_temp,"\n");
+            }
+        }
+        else if (caracter != '\n') {
+            strcat(palavra_lida, aux);	
+        }
+	}
+
+    if(excluir == 1)    //Chama função para atualizar arquivo sem a linha excluida
+    { 
+        //Abrindo para escrita
+        arquivo_palavras=fopen("./arquivos/arq_palavras.txt","w");
+        if(arquivo_palavras == NULL) 
+        {
+            printf("\nERRO ao abrir o arquivo de palavras\n");
+        }
+
+        system("cls");
+        rewind(arquivo_palavras_temp);
+        while ((caracter=fgetc(arquivo_palavras_temp))!= EOF)
+        {
+            aux[0] = caracter;
+            fprintf(arquivo_palavras,aux);
+        }
+
+        //Removendo arquivo
+        char nome_remove[]="./arquivos/arq_palavras_temp.txt";  
+        fclose(arquivo_palavras_temp);                          
+        remove(nome_remove);
+
+        printf("\n\n..... Palavra excluida com sucesso .....\n\n");
+        printf("\n Palavra excluida: %s", palavra_excluida);
+        printf("\n Linha do arquivo que foi excluida: %d\n\n", linha_excluir);
+        system("pause");
+    } 
+    else 
+    {
+        system("cls");
+        printf("\n\n  ERRO: NAO FOI POSSIVEL EXCLUIR!!");
+        printf("\n  Esta palavra nao existe no arquivo\n\n");
+        system("pause");
+    }
+    fclose(arquivo_palavras_temp);
     fclose(arquivo_palavras);
 }
 
