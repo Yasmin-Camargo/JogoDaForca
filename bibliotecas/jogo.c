@@ -16,7 +16,7 @@ char menu();
 char sub_menu_iniciar_jogo();
 void como_jogar();
 void desenvolvedores();
-void sorteador();
+void visualisar_palavras();
 char sub_menu_arquivo();
 void inserir_palavra();
 void sorteador_palavras();
@@ -31,6 +31,7 @@ char nome[100], dica[100], palavra[100], palavra_secreta[100], letras_digitadas[
 char letra;
 int erros = 0;
 
+//FUNÇÕES
 void animacao_inicio(){ //animação quando o usuário entra no jogo
     system("cls");
     Sleep(100);
@@ -116,7 +117,6 @@ char menu(){  //menu do jogo
 }
 
 
-
 char sub_menu_iniciar_jogo(){  //submenu do jogo
     char op2[10]="";
     int novo_op2;
@@ -196,234 +196,6 @@ void desenvolvedores(){
     system("pause");
 }
 
-void sorteador(){
-system("cls");
-
-    printf (" \n\t*----------------------------------------------------------------*");
-    printf (" \n\t|                                                                |");
-    printf (" \n\t|                     CATEGORIA CORES:                           |");
-    printf (" \n\t|                                                                |");
-    printf (" \n\t|  amarelo queimado                 castanho avermelhado         |");
-    printf (" \n\t|  azul celeste                     azul turquesa                |");
-    printf (" \n\t|  dourado                          verde fluorescente           |");
-    printf (" \n\t|  rosa choque                      lilas                        |");
-    printf (" \n\t|  vermelho                         amarelo                      |");
-    printf (" \n\t|  azul                             branco                       |");
-    printf (" \n\t|  roxo                             verde                        |");
-    printf (" \n\t|  laranja                          rosa                         |");
-    printf (" \n\t|  marrom                           cinza                        |");
-    printf (" \n\t|  preto                            purpura                      |");
-    printf (" \n\t|                                                                |");
-    printf (" \n\t*-----------------------------------------------------------------*");
-
-
-    printf (" \n\n\t*----------------------------------------------------------------*");
-    printf (" \n\t|                                                                |");
-    printf (" \n\t|                     CATEGORIA OBJETOS:                         |");
-    printf (" \n\t|                                                                |");
-    printf (" \n\t|  prato                           caneca                        |");
-    printf (" \n\t|  dentadura                       drone                         |");
-    printf (" \n\t|  ededrom                         espelho                       |");
-    printf (" \n\t|  esponja                         escada                        |");
-    printf (" \n\t|  fritadeira                      furadeira                     |");
-    printf (" \n\t|  geladeira                       guitarra                      |");
-    printf (" \n\t|  helicoptero                     hidratante                    |");
-    printf (" \n\t|  impressora                      isopor                        |");
-    printf (" \n\t|  liquidificador                  janela                        |");
-    printf (" \n\t|  celular                         notebook                      |");
-    printf (" \n\t|  armário                         livro                         |");
-    printf (" \n\t|  mesa                            luminaria                     |");  
-    printf (" \n\t|  sofa                            caixa                         |");
-    printf (" \n\t|  borracha                        lapis                         |");
-    printf (" \n\t|  caneta                          estojo                        |");
-    printf (" \n\t|  pincel                          caderno                       |");
-    printf (" \n\t|  quadro                          televisao                     |"); 
-    printf (" \n\t|  garrafa                         copo                          |");
-    printf (" \n\t|  garfo                           faca                          |");
-    printf (" \n\t|  relogio                         chapeu                        |");
-    printf (" \n\t|  brinco                          bolsa                         |");  
-    printf (" \n\t|  chave                           tesoura                       |");
-    printf (" \n\t|  apontador                       regua                         |");
-    printf (" \n\t|  almofada                        cama                          |");
-    printf (" \n\t|  escrivaninha                    coberta                       |");
-    printf (" \n\t|  cadeira                         fogao                         |");
-    printf (" \n\t|  pia                             pote                          |");
-    printf (" \n\t|  cristaleira                     vaso                          |");
-    printf (" \n\t|  mala                            brinquedo                     |");
-    printf (" \n\t|  boneca                          livro                         |");
-    printf (" \n\t|  oculos                          bola                          |");
-    printf (" \n\t|                                                                |");
-    printf (" \n\t*-----------------------------------------------------------------*");
-
-
-    printf (" \n\n\t*----------------------------------------------------------------*");
-    printf (" \n\t|                                                                |");
-    printf (" \n\t|                CATEGORIA INSTRUMENTOS MUSICAIS:                |");
-    printf (" \n\t|                                                                |");
-    printf (" \n\t|  bateria                         castanhola                    |");
-    printf (" \n\t|  corneta                         clarim                        |");
-    printf (" \n\t|  gaita                           escaleta                      |");
-    printf (" \n\t|  flauta                          orgao                         |");
-    printf (" \n\t|  sanfona                         saxofone                      |");
-    printf (" \n\t|  trombeta                        trombone                      |");
-    printf (" \n\t|  tuba                            baixo                         |");
-    printf (" \n\t|  cavaquinho                      guitarra                      |");
-    printf (" \n\t|  banjo                           berimbau                      |");
-    printf (" \n\t|  harpa                           piano                         |");
-    printf (" \n\t|  vukulele                        viola                         |");
-    printf (" \n\t|  violao                          violino                       |");
-    printf (" \n\t|  violoncelo                      teclado                       |");
-    printf (" \n\t|                                                                |");
-    printf (" \n\t*-----------------------------------------------------------------*");
-
-    printf (" \n\n\t*----------------------------------------------------------------*");
-    printf (" \n\t|                                                                |");
-    printf (" \n\t|                         CATEGORIA FRUTAS:                      |");
-    printf (" \n\t|                                                                |");
-    printf (" \n\t|  abacate                         abacaxi                       |");
-    printf (" \n\t|  acerola                         amora                         |");
-    printf (" \n\t|  acai                            bergamota                     |");
-    printf (" \n\t|  banana                          cacau                         |");
-    printf (" \n\t|  caqui                           carambola                     |");
-    printf (" \n\t|  cereja                          coco                          |");
-    printf (" \n\t|  cupuacu                         figo                          |");
-    printf (" \n\t|  framboesa                       goiaba                        |");
-    printf (" \n\t|  groselha                        jabuticaba                    |");
-    printf (" \n\t|  jaca                            kiwi                          |");
-    printf (" \n\t|  laranja                         limao                         |");
-    printf (" \n\t|  maca                            mamao                         |");
-    printf (" \n\t|  manga                           maracuja                      |");
-    printf (" \n\t|  melancia                        melao                         |");
-    printf (" \n\t|  morango                         pequi                         |");
-    printf (" \n\t|  pera                            pessego                       |");
-    printf (" \n\t|  pitanga                         pitaya                        |");
-    printf (" \n\t|  uva                                                           |");
-    printf (" \n\t|                                                                |");
-    printf (" \n\t*-----------------------------------------------------------------*");
-
-    printf (" \n\n\t*----------------------------------------------------------------*");
-    printf (" \n\t|                                                                |");
-    printf (" \n\t|                         CATEGORIA ANIMAIS:                     |");
-    printf (" \n\t|                                                                |");
-    printf (" \n\t|  abelha                          abutre                        |");
-    printf (" \n\t|  aguia                           alce                          |");
-    printf (" \n\t|  alpaca                          anaconda                      |");
-    printf (" \n\t|  andorinha                       anta                          |");
-    printf (" \n\t|  aranha                          arara                         |");
-    printf (" \n\t|  asno                            avestruz                      |");
-    printf (" \n\t|  babuino                         bagre                         |");
-    printf (" \n\t|  baleia                          barracuda                     |");
-    printf (" \n\t|  besouro                         bezerro                       |");
-    printf (" \n\t|  bode                            barata                        |");
-    printf (" \n\t|  besouro                         burro                         |");
-    printf (" \n\t|  boi                             borboleta                     |");
-    printf (" \n\t|  boto                            cabra                         |");
-    printf (" \n\t|  cachorro                        camelo                        |");
-    printf (" \n\t|  canario                         carneiro                      |");
-    printf (" \n\t|  caranguejo                      cascavel                      |");
-    printf (" \n\t|  cavalo                          centopeia                     |");
-    printf (" \n\t|  crocodilo                       corvo                         |"); 
-    printf (" \n\t|  coiote                          chimpanze                     |");
-    printf (" \n\t|  egua                            elefante                      |");
-    printf (" \n\t|  enguia                          escorpiao                     |");
-    printf (" \n\t|  escaravelho                     esponja                       |");
-    printf (" \n\t|  falcao                          foca                          |");
-    printf (" \n\t|  flamingo                        furao                         |"); 
-    printf (" \n\t|  formiga                         gafanhoto                     |");
-    printf (" \n\t|  gaivota                         galinha                       |");
-    printf (" \n\t|  galo                            gamba                         |");
-    printf (" \n\t|  ganso                           gato                          |");
-    printf (" \n\t|  gaviao                          gazela                        |");
-    printf (" \n\t|  grilo                           guaxinim                      |");
-    printf (" \n\t|  harpia                          jabuti                        |");
-    printf (" \n\t|  jacare                          jaguar                        |");
-    printf (" \n\t|  joaninha                        jumento                       |");
-    printf (" \n\t|  javali                          jiboia                        |");
-    printf (" \n\t|  lacraia                         lagarta                       |");
-    printf (" \n\t|  lagartixa                       lagarto                       |");
-    printf (" \n\t|  leao                            lebre                         |");
-    printf (" \n\t|  lemure                          leopardo                      |");
-    printf (" \n\t|  lesma                           lobo                          |");
-    printf (" \n\t|  lula                            macaco                        |");
-    printf (" \n\t|  mamute                          mariposa                      |");
-    printf (" \n\t|  marmota                         morcego                       |");
-    printf (" \n\t|  mosquito                        naja                          |");
-    printf (" \n\t|  onca                            orangotango                   |");
-    printf (" \n\t|  orca                            ostra                         |");
-    printf (" \n\t|  ovelha                          panda                         |");
-    printf (" \n\t|  pantera                         papagaio                      |");
-    printf (" \n\t|  pardal                          passaro                       |");
-    printf (" \n\t|  pato                            pavao                         |");
-    printf (" \n\t|  peixe                           pinguim                       |");
-    printf (" \n\t|  piranha                         pulga                         |");
-    printf (" \n\t|  porco                           raposa                        |");
-    printf (" \n\t|  rato                            rena                          |");
-    printf (" \n\t|  ratazana                        salamandra                    |");
-    printf (" \n\t|  sapo                            salmao                        |");
-    printf (" \n\t|  sucuri                          tamandua                      |");
-    printf (" \n\t|  tatu                            tigre                         |");                       
-    printf (" \n\t|  texugo                          touro                         |");
-    printf (" \n\t|  toupeira                        tubarao                       |");                   
-    printf (" \n\t|  urso                            urubu                         |");
-    printf (" \n\t|  vaca                            veado                         |");
-    printf (" \n\t|  vespa                           zebra                         |");
-    printf (" \n\t|                                                                |");
-    printf (" \n\t*-----------------------------------------------------------------*");
-
-    printf (" \n\n\t*----------------------------------------------------------------*");
-    printf (" \n\t|                                                                |");
-    printf (" \n\t|                     CATEGORIA  PROFISSOES:                     |");
-    printf (" \n\t|                                                                |");                
-    printf (" \n\t|  padeiro                         veterinario                   |");
-    printf (" \n\t|  professor                       programador                   |");
-    printf (" \n\t|  ator                            engenheiro                    |");
-    printf (" \n\t|  dentista                        medico                        |");
-    printf (" \n\t|  fretista                        motorista                     |");
-    printf (" \n\t|  empresario                      cabelereiro                   |");
-    printf (" \n\t|  cantor                          cozinheiro                    |");  
-    printf (" \n\t|  cineasta                        artista                       |");
-    printf (" \n\t|  nutricionista                   garcom                        |");
-    printf (" \n\t|  desenhista                      escritor                      |");
-    printf (" \n\t|  publicitario                    historiador                   |");
-    printf (" \n\t|                                                                |");
-    printf (" \n\t*-----------------------------------------------------------------*");
-
-    printf (" \n\n\t*----------------------------------------------------------------*");
-    printf (" \n\t|                                                                |");
-    printf (" \n\t|                       CATEGORIA  PAISES:                       |");
-    printf (" \n\t|                                                                |");  
-    printf (" \n\t|  brasil                          argentina                     |");
-    printf (" \n\t|  mexico                          canada                        |");
-    printf (" \n\t|  colombia                        frança                        |");
-    printf (" \n\t|  holanda                         espanha                       |");
-    printf (" \n\t|  portugal                        uruguai                       |");
-    printf (" \n\t|  paraguai                        alemanha                      |");
-    printf (" \n\t|  japao                           chile                         |");
-    printf (" \n\t|  turquia                         russia                        |");
-    printf (" \n\t|  bolivia                         dinamarca                     |");
-    printf (" \n\t|  italia                          irlanda                       |");
-    printf (" \n\t|  australia                       india                         |");
-    printf (" \n\t|                                                                |");
-    printf (" \n\t*-----------------------------------------------------------------*");
-
-    printf (" \n\n\t*----------------------------------------------------------------*");
-    printf (" \n\t|                                                                |");
-    printf (" \n\t|                      CATEGORIA  LUGARES:                       |");
-    printf (" \n\t|                                                                |");  
-    printf (" \n\t|  hotel                           igreja                        |");
-    printf (" \n\t|  banco                           loja                          |");
-    printf (" \n\t|  prefeitura                      restaurante                   |");
-    printf (" \n\t|  cinema                          boate                         |");
-    printf (" \n\t|  balada                          mercado                       |");
-    printf (" \n\t|  lanchonete                      bar                           |");
-    printf (" \n\t|  hospital                        rodoviaria                    |");
-    printf (" \n\t|  quiosque                        parque                        |");
-    printf (" \n\t|  praça                           praia                         |");
-    printf (" \n\t|  padaria                                                       |");
-    printf (" \n\t|                                                                |");
-    printf (" \n\t*-----------------------------------------------------------------*\n");
- system("pause");
-}
 
 char sub_menu_arquivo(){  //submenu do jogo ARQUIVO
     char op2[10]="";
@@ -526,18 +298,59 @@ void sorteador_palavras()
     }
 
     fclose(arquivo_palavras);
-
-    printf("Palavra Sorteada ");
-    puts(nome);
-    printf("Dica:  ");
-    puts(dica);
-    printf("\n");
+    modo_contra_pessoa(nome,dica);
     system("pause");
     return;
 }
 
+//-----------------------------------------------------------------------------------------
+// FUNÇÕES DE MANIPULAÇAO DO ARQUIVO PALAVRAS
 
-//Função para inserir palavras no arquivo
+//Função para ler palavras 
+void visualisar_palavras(){
+    system("cls");
+    char caractere, aux[3]="", palavra[20];
+    int cont=1;
+
+    //Limpando strings
+    strcpy(palavra,"");
+    strcpy(aux,"");
+ 
+    //Abrindo arquivo para leitura
+    FILE *arquivo_palavras;
+    arquivo_palavras=fopen("arquivos/arq_palavras.txt","r");
+    if(arquivo_palavras == NULL) {
+        printf("\nERRO ao abrir o arquivo de palavras\n");  
+    }
+ 
+    //Lendo arquivo
+    printf (" \n\t*-----------------------------------------------------------------*\n");
+    printf("\n\n\tLINHA\t\t\t  PALAVRA    \t \t         DICA    \n\n\t");
+    printf("%5d", cont);
+    while( (caractere=fgetc(arquivo_palavras))!= EOF ){	
+        aux[0]=caractere;
+		if(caractere == ';'){
+            printf("%28s", palavra);
+            strcpy(palavra,"");
+        }
+        else if (caractere == '\n') {
+            cont++;
+            printf("\n\n\t%5d", cont);
+        }
+        else if (caractere != '\n'){
+            strcat(palavra, aux);	
+        }
+	}
+
+    printf ("\n\n\n\t*-----------------------------------------------------------------*\n");
+    printf("\n\n");
+ 
+    //Fechando arquivo
+    fclose(arquivo_palavras);
+    system("pause");
+}
+
+//Função para inserir palavras
 void inserir_palavra(){
     char palavra_adicionada[100], dica_adicionada[100];
     char caracter, palavra_lida[100], aux[3];
@@ -551,28 +364,27 @@ void inserir_palavra(){
     strcpy(palavra_adicionada," ");
     strcpy(aux," ");
     
-    //Abrindo arquivo para escrita
+    //Abrindo arquivo para escrita e leitura
 	FILE *arquivo_palavras;
 	arquivo_palavras=fopen("./arquivos/arq_palavras.txt","a+");
 	if(arquivo_palavras == NULL) {
 		printf("\nERRO ao abrir o arquivo de palavras\n");
 	}
     
-    fflush(stdin);
+    fflush(stdin);  //Descarregando buffers de saída
     system("cls");
     printf("\n  Digite a palavra para ser adicionada no arquivo: ");
     scanf("%[^\n]s", palavra_adicionada);
    
-    fflush(stdin);
+    fflush(stdin);  //Descarregando buffers de saída
     printf("\n  Digite a dica da palavra: ");
     scanf("%[^\n]s", dica_adicionada);
-    fflush(stdin);
+    fflush(stdin);  //Descarregando buffers de saída
  
     
     //Teste para verificar se a palavra já existe  no arquivo
     while( (caracter=fgetc(arquivo_palavras))!= EOF ){	
-        aux[0]=caracter;
-        		
+        aux[0]=caracter;		
 		if(caracter == ';'){
             if(strcmp(palavra_adicionada, palavra_lida)==0){
                 gravar=0;
@@ -584,7 +396,7 @@ void inserir_palavra(){
         }
 	}
 
-    if(gravar == 1){ //Adiciona palavra e dica no arquivo
+    if(gravar == 1){    //Adiciona palavra e dica no arquivo
         fprintf(arquivo_palavras,"\n");
         fprintf(arquivo_palavras,palavra_adicionada);
         fprintf(arquivo_palavras,";");
@@ -618,7 +430,7 @@ void excluir_palavra(){
     strcpy(palavra_excluida," ");
     strcpy(aux," ");
     
-    //Abrindo arquivo para escrita e leitura
+    //Abrindo arquivo para escrita 
 	FILE *arquivo_palavras;
 	arquivo_palavras=fopen("./arquivos/arq_palavras.txt","r");
 	if(arquivo_palavras == NULL) 
@@ -626,7 +438,7 @@ void excluir_palavra(){
 		printf("\nERRO ao abrir o arquivo de palavras\n");
 	}
 
-    //Abrindo arquivo temporário para escrita
+    //Abrindo arquivo temporário para escrita e leitura
     FILE *arquivo_palavras_temp;
     arquivo_palavras_temp=fopen("./arquivos/arq_palavras_temp.txt","w+");
     if(arquivo_palavras_temp == NULL) 
@@ -634,32 +446,32 @@ void excluir_palavra(){
         printf("\nERRO ao abrir o arquivo de palavras\n");
     }
 
-    // Contagem de linhas do arquivo
+    // Contagem de linhas totais do arquivo
     while ((caracter = fgetc(arquivo_palavras)) != EOF){
         if (caracter == '\n') {
             quantidade_linhas++;
         }
     }
     
-    fflush(stdin);
     system("cls");
+    fflush(stdin);  //Descarregando buffers de saída
     printf("\n  Digite a palavra para ser excluida do arquivo: ");
     scanf("%[^\n]s", palavra_excluida);
-    fflush(stdin);
+    fflush(stdin);  //Descarregando buffers de saída
    
     //Teste para verificar se a palavra já existe no arquivo
-    //A função também salva uma cópia do arquivo original em um temporário sem a linha a palavra excluida
-    rewind(arquivo_palavras);
+    //A função também salva uma cópia do arquivo original em um temporário sem a linha correspondente da palavra excluida
+    rewind(arquivo_palavras);   //Posicionando ponteiro do arquivo para o início
     while( (caracter=fgetc(arquivo_palavras))!= EOF ) {
         aux[0]=caracter;	
 		if(caracter == ';') {
-            if(strcmp(palavra_excluida, palavra_lida)==0) {     //Quando encontra uma palavra
+            if(strcmp(palavra_excluida, palavra_lida)==0) {     //Quando encontra no arquivo a palavra que quer excluir 
                 excluir=1;
                 linha_excluir = cont_linhas;
                 caracter=fgetc(arquivo_palavras);
                 while ((caracter=fgetc(arquivo_palavras))!= ';')
                 {
-                    //Pula leitura da linha da palavra a ser excluida
+                    //Pula leitura da linha da palavra a ser excluida e não grava no arquivo temporário
                 }
                 caracter=fgetc(arquivo_palavras);
             } else{
@@ -671,7 +483,7 @@ void excluir_palavra(){
         else if (caracter == '\n') {
             cont_linhas++;
             if (cont_linhas == (quantidade_linhas)) {
-                //Não pode gravar o \n no arquivo
+                //Não pode gravar o \n no arquivo, caso seja a última linha
             } else {
                 fprintf(arquivo_palavras_temp,"\n");
             }
@@ -681,7 +493,8 @@ void excluir_palavra(){
         }
 	}
 
-    if(excluir == 1)    //Chama função para atualizar arquivo sem a linha excluida
+    //Atualização do arquivo sem a linha excluida
+    if(excluir == 1)    //Caso o arquivo original tenha sido modificado 
     { 
         //Abrindo para escrita
         arquivo_palavras=fopen("./arquivos/arq_palavras.txt","w");
@@ -698,7 +511,7 @@ void excluir_palavra(){
             fprintf(arquivo_palavras,aux);
         }
 
-        //Removendo arquivo
+        //Removendo arquivo temporário
         char nome_remove[]="./arquivos/arq_palavras_temp.txt";  
         fclose(arquivo_palavras_temp);                          
         remove(nome_remove);
@@ -708,14 +521,19 @@ void excluir_palavra(){
         printf("\n Linha do arquivo que foi excluida: %d\n\n", linha_excluir);
         system("pause");
     } 
-    else 
+    else    //Caso o arquivo original não tenha sido modificado
     {
         system("cls");
         printf("\n\n  ERRO: NAO FOI POSSIVEL EXCLUIR!!");
         printf("\n  Esta palavra nao existe no arquivo\n\n");
+
+        //Removendo arquivo temporário
+        char nome_remove[]="./arquivos/arq_palavras_temp.txt";  
+        fclose(arquivo_palavras_temp);                          
+        remove(nome_remove);
+
         system("pause");
     }
-    fclose(arquivo_palavras_temp);
     fclose(arquivo_palavras);
 }
 
@@ -840,7 +658,6 @@ void percorrer_palavra_secreta()
     scanf("%c", &letra);
     aux[0] = letra;
 
-    
     //Verifica se a letra já foi digitada
     for (int i=0; i< strlen(letras_digitadas); i++){
         if (letra == letras_digitadas[i]){

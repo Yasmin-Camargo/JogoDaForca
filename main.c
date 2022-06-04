@@ -42,19 +42,15 @@ int main()
     do
     {
         op_menu = menu(); // Opção menu
-        switch (op_menu)
-        {
+        switch (op_menu) {
         case 1:
             op_menu2 = 1;
-            while (op_menu2 != 0)
-            {
+            while (op_menu2 != 0) {
                 op_menu2 = sub_menu_iniciar_jogo();
-                if (op_menu2 == 0)
-                {
+                if (op_menu2 == 0) {
                     /* code */
                 }
-                else if (op_menu2 == 1)
-                {
+                else if (op_menu2 == 1) {
                     // Limpando conteúdo das variaveis 
 
                     printf("Digite a palavra secreta: ");
@@ -67,13 +63,10 @@ int main()
                     modo_contra_pessoa(palavra_enviada, dica_enviada);
                     system("pause");
                 }
-                else if (op_menu2 == 2)
-                {
+                else if (op_menu2 == 2) {
                     sorteador_palavras();
                     
-                }
-                else
-                {
+                } else {
                     printf("Digite uma opcao valida");
                 }
             }
@@ -93,27 +86,26 @@ int main()
             break;
 
         case 5:
-                op_menu3 = 1;
-                while (op_menu3 != 0) {
-                    op_menu3 = sub_menu_arquivo();
-                    if (op_menu3 == 0) {
-                        /* code */
+            op_menu3 = 1;
+            while (op_menu3 != 0) {
+                op_menu3 = sub_menu_arquivo();
+                if (op_menu3 == 0) {
+                    /* code */
 
-                    } else if (op_menu3==1) {
-                        sorteador();
+                } else if (op_menu3==1) {
+                    visualisar_palavras();
                         
-                    } else if (op_menu3==2) {
-                        inserir_palavra();
+                } else if (op_menu3==2) {
+                    inserir_palavra();
                 
-                    } else if (op_menu3==3) {
-                        excluir_palavra();
+                } else if (op_menu3==3) {
+                    excluir_palavra();
                 
-                    } else {
-                        printf("Digite uma opcao valida");
-                    }
+                } else {
+                    printf("Digite uma opcao valida");
                 }
-               break;
-            break;
+            }
+        break;
 
         case 0:
             system("cls");
@@ -134,7 +126,7 @@ int main()
             break;
         }
     } while (op_menu != 0);
-
+    
     return 0;
 }
 

@@ -6,7 +6,7 @@ char menu();
 char sub_menu_iniciar_jogo();
 void como_jogar();
 void desenvolvedores();
-void sorteador();
+void visualisar_palavras();
 char sub_menu_arquivo();
 void inserir_palavra();
 void sorteador_palavras();

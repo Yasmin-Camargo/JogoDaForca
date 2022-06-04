@@ -1,6 +1,5 @@
 amarelo queimado;cor;
 azul celeste;cor;
-castanho avermelhado;cor;
 azul turquesa;cor;
 dourado;cor;
 rosa choque;cor;
@@ -325,6 +324,6 @@ bar;lugar;
 hospital;lugar;
 rodoviaria;lugar;
 quiosque;lugar;
-parque;lugar;
-praça;lugar;
+praca;lugar;
 praia;lugar;
+parque;lugar;
