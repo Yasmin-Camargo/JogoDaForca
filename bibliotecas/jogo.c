@@ -574,6 +574,7 @@ void modo_contra_pessoa(char palavra_obtida[100], char dica_obtida[100]){
 
 
 void mostrar_palavra_secreta(){
+    strcpy(palavra_secreta,palavra); //Define o tamanho da palavra secreta (para não dar erro)
     for (int i=0; i<(strlen(palavra)); i++)
     {
         //Casos especiais
