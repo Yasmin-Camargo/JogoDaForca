@@ -1,6 +1,7 @@
 //Biblioteca própia com as funções do jogo
 
 #include "jogo.h"
+#include "boneco_forca.h" //Biblioteca com as versões do boneco forca
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -19,6 +20,15 @@ void sorteador();
 char sub_menu_arquivo();
 void inserir_palavra();
 
+void modo_contra_pessoa(char palavra_obtida[100], char dica_obtida[100]);
+void percorrer_palavra_secreta();
+void mostra_dica_palavra();
+void mostrar_palavra_secreta();
+
+//VARIAVEIS GLOBAIS
+char nome[100], dica[100], palavra[100], palavra_secreta[100], letras_digitadas[100];
+char letra;
+int erros = 0;
 
 void animacao_inicio(){ //animação quando o usuário entra no jogo
     system("cls");
@@ -514,4 +524,169 @@ void inserir_palavra(){
         system("pause");
     }
     fclose(arquivo_palavras);
+}
+
+
+//--------------------------------------------------------------
+//MODO CONTRA PESSOA
+void modo_contra_pessoa(char palavra_obtida[100], char dica_obtida[100]){
+    strcpy(palavra_secreta, "\0");
+    strcpy(palavra, "\0");
+    strcpy(letras_digitadas,"\0");
+    erros=0;
+
+    strcpy(palavra,palavra_obtida);
+    strcpy(dica,dica_obtida);
+
+    mostrar_palavra_secreta();
+
+    while (1)
+    {
+        // system("cls");
+        percorrer_palavra_secreta();
+        // mostrar_boneco(erros);
+                        
+        if (strcmp(palavra, palavra_secreta) == 0)
+        {
+             // GANHOU!
+            system("cls");
+            printf("\n\n       PARABENS!!! VOCE VENCEU!\n\n");
+            boneco8();
+            printf("\n\n");
+            printf("\tPalavra: %s\n\n", palavra);
+            break;
+        }
+        // verifica se perdeu
+        if (erros == 6)
+        {
+            // perdeu
+            //  Mostrar boneco de game over
+            system("cls");
+            printf("\n\n       VOCE PERDEU! :(\n\n");
+            boneco7();
+            printf("\n\n");
+            printf("\tA palavra secreta era %s", palavra);
+            printf("\n\n");
+            break;
+        }
+    };
+}
+
+
+void mostrar_palavra_secreta(){
+    for (int i=0; i<(strlen(palavra)); i++)
+    {
+        //Casos especiais
+        if (palavra[i] == ' ' ){
+            palavra_secreta[i] = ' ';
+        } else if (palavra[i] == '-')
+        {
+            palavra_secreta[i] = '-';
+        } else
+        {
+            palavra_secreta[i] = '_';
+        }
+    }
+}
+
+void percorrer_palavra_secreta()
+{
+    int gravar=1;
+    char aux[3];
+
+    strcpy(aux," ");
+    fflush(stdin);
+    system("cls");
+    if (erros == 0)
+    {
+        system("cls");
+        incializacao_boneco();
+        printf("\n\n");
+    }
+    else if (erros == 1)
+    {
+        system("cls");
+        boneco1();
+        printf("\n\n");
+    }
+    else if (erros == 2)
+    {
+        system("cls");
+        boneco2();
+        printf("\n\n");
+
+    }
+    else if (erros == 3)
+    {
+        system("cls");
+        boneco3();
+        printf("\n\n");
+    }
+    else if (erros == 4)
+    {
+        system("cls");
+        boneco4();
+        printf("\n\n");
+    }
+    else if (erros == 5)
+    {
+        system("cls");
+        boneco5();
+        printf("\n\n");
+    }
+    else if (erros == 6)
+    {
+        system("cls");
+        boneco6();
+        printf("\n\n");
+    }
+    
+    mostra_dica_palavra();
+    printf("   Digite uma letra: ");
+    scanf("%c", &letra);
+    aux[0] = letra;
+
+    
+    //Verifica se a letra já foi digitada
+    for (int i=0; i< strlen(letras_digitadas); i++){
+        if (letra == letras_digitadas[i]){
+            printf("\n\t\t--- LETRA JA FOI DIGITADA --- \n\n");
+            system("pause");
+            gravar = 0;
+        }
+    }
+
+    if (gravar == 1){
+        strcat(letras_digitadas,aux);
+        strcat(letras_digitadas,"-");
+        int count = 1; // 1=sim 0=não
+
+        for (int i=0; i<strlen(palavra); i++)
+        {
+            if (palavra[i] == letra)
+            { // certo
+                palavra_secreta[i] = letra;
+                count = 0;
+            }
+        }
+
+        if (count == 1)
+        {
+            erros++;
+        }
+    }
+   
+    // return;
+}
+
+void mostra_dica_palavra(){
+    printf(" \tDica: %s\t\t", dica);
+    for (int a = 0; a < strlen(palavra_secreta); a++)
+    {
+        printf("%c ", palavra_secreta[a]);
+    }
+    printf("\n\n");
+    printf("  %s ", letras_digitadas);
+    printf("\n\n");
+    
 }
