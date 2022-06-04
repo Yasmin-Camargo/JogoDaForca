@@ -25,7 +25,7 @@ Desenvolvido por:
 #include <locale.h>
 
 // VARIÁVEIS GLOBAIS
-char nome[100], dica[100], palavra[100], palavra_secreta[100];
+char nome[100], dica[100], palavra[100], palavra_secreta[100], letras_digitadas[100];
 char letra;
 int erros = 0;
 
@@ -63,6 +63,7 @@ int main()
                     // Limpando conteúdo das variaveis 
                     strcpy(palavra_secreta, "\0");
                     strcpy(palavra, "\0");
+                    strcpy(letras_digitadas,"\0");
                     erros=0;
 
                     printf("Digite a palavra secreta: ");
@@ -267,6 +268,10 @@ void mostrar_palavra_secreta()
 
 void percorrer_palavra_secreta()
 {
+    int gravar=1;
+    char aux[3];
+
+    strcpy(aux," ");
     fflush(stdin);
     system("cls");
     if (erros == 0)
@@ -316,22 +321,39 @@ void percorrer_palavra_secreta()
     mostra_dica_palavra();
     printf("   Digite uma letra: ");
     scanf("%c", &letra);
+    aux[0] = letra;
 
-    int count = 1; // 1=sim 0=não
-
-    for (int i=0; i<strlen(palavra); i++)
-    {
-        if (palavra[i] == letra)
-        { // certo
-            palavra_secreta[i] = letra;
-            count = 0;
+    
+    //Verifica se a letra já foi digitada
+    for (int i=0; i< strlen(letras_digitadas); i++){
+        if (letra == letras_digitadas[i]){
+            printf("\n\t\t--- LETRA JA FOI DIGITADA --- \n\n");
+            system("pause");
+            gravar = 0;
         }
     }
 
-    if (count == 1)
-    {
-        erros++;
+    if (gravar == 1){
+        strcat(letras_digitadas,aux);
+        strcat(letras_digitadas,"-");
+        int count = 1; // 1=sim 0=não
+
+        for (int i=0; i<strlen(palavra); i++)
+        {
+            if (palavra[i] == letra)
+            { // certo
+                palavra_secreta[i] = letra;
+                count = 0;
+            }
+        }
+
+        if (count == 1)
+        {
+            erros++;
+        }
     }
+   
+    
     // return;
 }
 
@@ -341,6 +363,8 @@ void mostra_dica_palavra(){
     {
         printf("%c ", palavra_secreta[a]);
     }
-    printf("\n\n\n");
+    printf("\n\n");
+    printf("  %s ", letras_digitadas);
+    printf("\n\n");
     
 }
