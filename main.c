@@ -3,7 +3,6 @@
 
 /*
 Trabalho Final - Programação de computadores
-
 Desenvolvido por:
     BIANCA BEPPLER DULLIUS
     CAROLINE SOUZA CAMARGO
@@ -25,13 +24,16 @@ Desenvolvido por:
 #include <locale.h>
 
 // VARIÁVEIS GLOBAIS
-char palavra_enviada[100], dica_enviada[100];
+char palavra_enviada[100], dica_enviada[100], jogadas_modo1[100], jogadas_modo2[100];
 char letra;
 
 // ESCOPO DAS FUNÇÕES
 
 // CÓDIGO
 int main()
+int jogadas = 0;
+int vitorias = 0;
+int derrotas = 0;
 {
     int op_menu, op_menu2, op_menu3;
     system("color 5F");              // CORES Fundo: Branco; Letra: Roxo
@@ -82,9 +84,163 @@ int main()
             break;
 
         case 4:
-            /* code */
-            break;
 
+        //LISTA JOGADAS
+        typedef struct tentativas {
+            int jog;
+            struct tentativas *prox;
+            } JOG;
+            //Recebe as jogodas e devolve a lista de jogadas
+            JOG* ListaJogadas(int *tentativas, int tamj){
+                int i;
+                JOG* p = NULL;
+                JOG* a = NULL;
+                JOG* lista = NULL;
+                for(i = 0; i < tamj; i++ )
+                
+                {
+                    p = (JOG*)malloc(sizeof(JOG));
+                    p->jog = jogadas[i];
+                    p->prox = NULL;
+                    if(i==0)
+        { 
+            lista=p;
+        }else{
+            a->prox=p;
+        }
+        a=p;
+    }
+    return lista;
+}
+
+void imprimir(JOG *p){
+    printf("\n");
+    while(p!=NULL)
+    {
+        printf("Você jogou %d vezes",p->jog);
+        printf("\n");
+        p=p->prox;
+    }
+}
+void limparLista(JOG *p){
+    JOG *n;
+    while(p!=NULL)
+    {
+        n=p->prox;
+        free(p);
+        p=n;
+    }
+}
+
+//LISTA VITORIAS
+typedef struct venceu{
+    int ganhou;
+    struct venceu * prox;
+} VIT;
+
+VIT* ListaVitorias(int *vitorias, int tamv){
+    int g;
+    VIT * v = NULL;
+    VIT * b = NULL;
+    VIT* lista2 = NULL;
+    
+    for(g = 0; g < tamv; g++){
+        v = (VIT*)malloc(sizeof(VIT));
+        v->ganhou = vitorias[g];
+        v->prox = NULL;
+        
+        if(g==0){
+            lista=v;
+        }else{
+            b->prox=v;
+        }
+        b=v;
+    }
+    return lista2;
+}
+void imprimir2(VIT *v){
+    printf("\n");
+    while(v!=NULL)
+    {
+        printf("Você ganhou %d vezes",v->ganhou);
+        printf("\n");
+        v=v->prox;
+    }
+}
+void limparLista2(VIT *v){
+    VIT *n;
+    while(v!=NULL)
+    {
+        n=v->prox;
+        free(v);
+        v=n;
+    }
+}
+//LISTA DERROTAS
+typedef struct perdeu{
+    int loser;
+    struct perdeu * prox;
+} DER;
+
+DER* ListaDerrotas(int *derrotas, int tamd){
+    int l;
+    DER * d = NULL;
+    DER * c = NULL;
+    DER* lista3 = NULL;
+    
+    for(l = 0; l < tamd; l++){
+        d = (DER*)malloc(sizeof(DER));
+        d->loser = derrotas[l];
+        d->prox = NULL;
+        
+        if(l==0){
+            lista=d;
+        }else{
+            c->prox=d;
+        }
+        c=d;
+    }
+    return lista3;
+}
+void imprimir3(DER *d){
+    printf("\n");
+    while(d!=NULL)
+    {
+        printf("Você perdeu %d vezes",d->loser);
+        printf("\n");
+        d=d->prox;
+    }
+}
+void limparLista3(DER *d){
+    DER *n;
+    while(d!=NULL)
+    {
+        n=d->prox;
+        free(d);
+        d=n;
+    }
+}
+
+int jogadas[100], vitorias[100], derrotas [100];
+int tamj = (sizeof(jogadas))/sizeof(int); //tamanho do vetor jogadas
+int tamv =(sizeof(vitorias))/sizeof(int); //tamanho do vetor vitorias
+int tamd = (sizeof(derrotas))/sizeof(int); //tamanho do vetor derrotas
+    
+    JOG* p=ListaJogadas(jogadas, tamj);
+    VIT* v=ListaVitorias(vitorias, tamv;)
+    DER* d=ListaDerrotas(derrotas, tamd);
+
+    imprimir(p);
+    imprimir(v);
+    imprimir(d);
+
+    //limpar lista(somente depois de usa-la)
+    limparLista(p);
+    limparLista(v);
+    limparLista(d);
+    return 0;
+
+        break;
         case 5:
             op_menu3 = 1;
             while (op_menu3 != 0) {
@@ -129,4 +285,3 @@ int main()
     
     return 0;
 }
-
