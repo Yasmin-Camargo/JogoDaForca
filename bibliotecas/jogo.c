@@ -10,6 +10,7 @@
 #include <ctype.h>
 #include <locale.h>
 
+
 //ESCOPO DAS FUNÇÕES
 void animacao_inicio();
 char menu();
@@ -25,11 +26,13 @@ void percorrer_palavra_secreta();
 void mostra_dica_palavra();
 void mostrar_palavra_secreta();
 void excluir_palavra();
-
 //VARIAVEIS GLOBAIS
 char nome[100], dica[100], palavra[100], palavra_secreta[100], letras_digitadas[100];
 char letra;
 int erros = 0;
+int jogadas = 0;
+int vitorias = 0;
+int derrotas = 0;
 
 //FUNÇÕES
 void animacao_inicio(){ //animação quando o usuário entra no jogo
@@ -559,17 +562,23 @@ void modo_contra_pessoa(char palavra_obtida[100], char dica_obtida[100]){
                         
         if (strcmp(palavra, palavra_secreta) == 0)
         {
+            jogadas++;
+            vitorias++;
              // GANHOU!
             system("cls");
             printf("\n\n       PARABENS!!! VOCE VENCEU!\n\n");
             boneco8();
             printf("\n\n");
             printf("\tPalavra: %s\n\n", palavra);
+
             break;
         }
         // verifica se perdeu
         if (erros == 6)
         {
+            jogadas++;
+            derrotas++;
+
             // perdeu
             //  Mostrar boneco de game over
             system("cls");
