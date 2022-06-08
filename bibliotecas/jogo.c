@@ -10,7 +10,6 @@
 #include <ctype.h>
 #include <locale.h>
 
-
 //ESCOPO DAS FUNÇÕES
 void animacao_inicio();
 char menu();
@@ -21,21 +20,28 @@ void visualisar_palavras();
 char sub_menu_arquivo();
 void inserir_palavra();
 void sorteador_palavras();
-void modo_contra_pessoa(char palavra_obtida[100], char dica_obtida[100]);
+int modo_contra_pessoa(char palavra_obtida[100], char dica_obtida[100],int modo);
 void percorrer_palavra_secreta();
 void mostra_dica_palavra();
 void mostrar_palavra_secreta();
 void excluir_palavra();
+
+//Funções lista encadeada
+void lista_encadeada();
+celula *cria(void);
+void imprime(celula * ini);
+void insere(int jogadas_isere_lista, char palavra_isere_lista[100], int cont_isere_lista, char modo_jogo_isere_lista[100], celula * p);
+
+
 //VARIAVEIS GLOBAIS
 char nome[100], dica[100], palavra[100], palavra_secreta[100], letras_digitadas[100];
 char letra;
-int erros = 0;
-int jogadas = 0;
-int vitorias = 0;
-int derrotas = 0;
+int erros = 0, contador;
+
 
 //FUNÇÕES
 void animacao_inicio(){ //animação quando o usuário entra no jogo
+    ini = cria(); //Cria Lista encadeada
     system("cls");
     Sleep(100);
     printf ("\n                                                                ");
@@ -73,6 +79,7 @@ void animacao_inicio(){ //animação quando o usuário entra no jogo
     printf ("\n \t   ##       ######   ##  ##   ######   ##  ##                  ");
     printf (" \n \n                                                            ");
     Sleep(1200);
+
     return; 
 }
 
@@ -299,12 +306,12 @@ void sorteador_palavras()
         temp[0] = caractere;
         strcat(dica, temp); // Copia caracteres no final da string dica
     }
-
+    
     fclose(arquivo_palavras);
-    modo_contra_pessoa(nome,dica);
-    system("pause");
-    return;
+    modo_contra_pessoa(nome,dica,2);
+
 }
+
 
 //-----------------------------------------------------------------------------------------
 // FUNÇÕES DE MANIPULAÇAO DO ARQUIVO PALAVRAS
@@ -543,10 +550,13 @@ void excluir_palavra(){
 
 //-----------------------------------------------------------------------------------------
 //MODO CONTRA PESSOA
-void modo_contra_pessoa(char palavra_obtida[100], char dica_obtida[100]){
+int modo_contra_pessoa(char palavra_obtida[100], char dica_obtida[100], int modo){
     strcpy(palavra_secreta, "\0");
     strcpy(palavra, "\0");
     strcpy(letras_digitadas,"\0");
+    int jogadas = 0;
+    char palavra_enviada[100];
+
     erros=0;
 
     strcpy(palavra,palavra_obtida);
@@ -562,23 +572,17 @@ void modo_contra_pessoa(char palavra_obtida[100], char dica_obtida[100]){
                         
         if (strcmp(palavra, palavra_secreta) == 0)
         {
-            jogadas++;
-            vitorias++;
              // GANHOU!
             system("cls");
             printf("\n\n       PARABENS!!! VOCE VENCEU!\n\n");
             boneco8();
             printf("\n\n");
             printf("\tPalavra: %s\n\n", palavra);
-
             break;
         }
         // verifica se perdeu
         if (erros == 6)
         {
-            jogadas++;
-            derrotas++;
-
             // perdeu
             //  Mostrar boneco de game over
             system("cls");
@@ -590,6 +594,16 @@ void modo_contra_pessoa(char palavra_obtida[100], char dica_obtida[100]){
             break;
         }
     };
+    contador++;
+
+    //Adiciona dados na lista encadeada
+    if (modo==0){
+        insere(erros,palavra,contador,"Modo contra uma pessoa",ini);
+    }
+    else if (modo==2){
+        insere(erros,palavra,contador,"Modo contra o computador",ini);
+    }
+    return(erros);
 }
 
 
@@ -708,5 +722,75 @@ void mostra_dica_palavra(){
     printf("\n\n");
     printf("  %s ", letras_digitadas);
     printf("\n\n");
-    
+}
+
+//-------------------------------------------------------------------------------------
+//FUNÇÕES LISTA ENCADEADA
+
+//Cria a Lista encadeada
+celula *cria(void)
+{
+	celula *start;
+
+	start = (celula *) malloc(sizeof(celula));
+	start->prox = NULL;
+	return start;
+}
+
+//Insere dados na Lista
+void insere(int jogadas_isere_lista, char palavra_isere_lista[100], int cont_isere_lista, char modo_jogo_isere_lista[100], celula * p){
+	celula *nova;
+	nova = (celula *) malloc(sizeof(celula));
+
+	nova->jogadas_struct = jogadas_isere_lista; //Insere as jogadas
+    strcpy(nova->palavra_struct, palavra_isere_lista); //Insere a palavra
+    nova->contador_struct = cont_isere_lista; //Insere qual é o numero em que esta a lista 
+    strcpy(nova->modo_jogo_struct, modo_jogo_isere_lista); //Insere o modo de jogo
+
+	nova->prox = p->prox;
+	p->prox = nova;
+}
+
+//Mostra a Lista Encadeada
+void imprime(celula * ini){
+    int vitorias=0, derrotas=0;
+	celula *p;
+    celula *p2;
+    celula *p3;
+    celula *p4;
+
+    p2 = ini->prox;
+    p3 = ini->prox;
+    p4 = ini->prox;
+
+    system("cls");
+
+    printf ("\n\n---------------------------------------------------");
+
+    //Percorre a lista
+    for (p = ini->prox; p != NULL || p2 != NULL || p3 != NULL || p4 != NULL; p = p->prox){
+		printf("\n  %d)\n", p->contador_struct); //Mostra os campos da lista
+        printf("    Modo de Jogo: %s\n", p4->modo_jogo_struct);
+        printf("    Palavra Sorteada: %s\n", p3->palavra_struct);
+        printf("    Quantidade de erros: %d\n", p2->jogadas_struct);
+        
+        //Teste para verificar se a pessoa ganhou:
+        if (p2->jogadas_struct < 6){
+            printf("    Resultado: Venceu\n");
+            vitorias++;
+        }
+        else{
+            printf("    Resultado: Perdeu\n");
+            derrotas++;
+        }
+        p2 = p2->prox;
+        p3 = p3->prox;
+        p4 = p4->prox;
+        printf ("\n---------------------------------------------------\n");
+    }
+    printf("\n\n");
+
+    printf("\n\n RESUMO    \n");
+    printf("\n  -> TOTAL DE VITORIAS: %d    ",vitorias);
+    printf("\n  -> TOTAL DE DERROTAS: %d   \n\n\n",derrotas); 
 }
