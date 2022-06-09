@@ -739,6 +739,22 @@ celula *cria(void)
 
 //Insere dados na Lista
 void insere(int jogadas_isere_lista, char palavra_isere_lista[100], int cont_isere_lista, char modo_jogo_isere_lista[100], celula * p){
+//Cria arquivo para armazenar o histórico
+    FILE *hist_jogadas;
+    char resultados_modo_jogo[100]; 
+    char resultados_palavra[100];
+    char resultados_jogadas[100];
+//Se o histórico não estiver vazio, pega os dados anteriores do historico e cola para ser usado na lista 
+    if (resultados_modo_jogo !=0){
+        strcpy(modo_jogo_isere_lista, resultados_modo_jogo);
+    }
+    if(resultados_jogadas != 0){
+        strcpy(jogadas_isere_lista, resultados_jogadas);
+    }
+    if(resultados_palavra != 0){
+        strcpy(palavra_isere_lista, resultados_palavra);
+    }
+	
 	celula *nova;
 	nova = (celula *) malloc(sizeof(celula));
 
@@ -749,6 +765,15 @@ void insere(int jogadas_isere_lista, char palavra_isere_lista[100], int cont_ise
 
 	nova->prox = p->prox;
 	p->prox = nova;
+	
+	
+	hist_jogadas = fopen("./arquivos/historico.txt","a");
+        printf("Historico de Jogadas");
+        fprintf(hist_jogadas,"\n");
+        fprintf(hist_jogadas, "Modo de jogo: %s \n", resultados_modo_jogo);
+        fprintf(hist_jogadas,"Palavra Sorteada: %s\n", resultados_palavra);
+        fprintf(hist_jogadas,"Quantidade de erros: %d\n", resultados_jogadas);
+        fclose(hist_jogadas);
 }
 
 //Mostra a Lista Encadeada
