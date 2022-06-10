@@ -1,4 +1,3 @@
-
 2;casa;Modo contra uma pessoa;
 6;mosquito;Modo contra o computador;
 5;nutricionista;Modo contra o computador;
