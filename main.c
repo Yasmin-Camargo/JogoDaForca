@@ -33,7 +33,7 @@ char letra;
 // CÓDIGO
 int main()
 {
-    int op_menu, op_menu2, op_menu3;
+    int op_menu, op_menu2, op_menu3, op_menu4;
     
     system("color 5F");                 // CORES Fundo: Branco; Letra: Roxo
     system("title JOGO DA FORCA");      // Altera o nome da janela
@@ -51,8 +51,7 @@ int main()
         hist_jogadas = fopen("./arquivos/historico.txt","w");  //Cria arquivo
         fclose(hist_jogadas); 
     }
-    system("pause");
-    
+   
     do
     {
         op_menu = menu();   // Opção menu
@@ -98,9 +97,24 @@ int main()
             break;
 
         case 4:
-            imprime(ini); //Mostra conteúdo da lista encadeada
+            op_menu4 = 1;
+            while (op_menu4 != 0) {
+                op_menu4 = sub_menu_historico();
+                if (op_menu4 == 0) {
+                    /* code */
 
-            system("pause");
+                } else if (op_menu4==1) {
+                    imprime(ini); //Mostra conteúdo da lista encadeada
+                    system("pause");
+                        
+                } else if (op_menu4==2) {
+                    retira(ini);  //Busca e eclui item do histórico na lista encadeada
+
+                } else {
+                    printf("Digite uma opcao valida");
+                }
+            }
+            
             break;
 
         case 5:

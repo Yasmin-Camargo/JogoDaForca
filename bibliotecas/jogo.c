@@ -18,6 +18,7 @@ void como_jogar();
 void desenvolvedores();
 void visualisar_palavras();
 char sub_menu_arquivo();
+char sub_menu_historico();
 void inserir_palavra();
 void sorteador_palavras();
 int modo_contra_pessoa(char palavra_obtida[100], char dica_obtida[100],int modo);
@@ -32,6 +33,8 @@ celula *cria(void);
 void imprime(celula * ini);
 void insere(int jogadas_isere_lista, char palavra_isere_lista[100], int cont_isere_lista, char modo_jogo_isere_lista[100], celula *p, int op_atualiza);
 void atualiza_lista();
+celula* retira (celula* ini);
+void atualiza_arquivo_historico(celula* ini);
 
 
 //VARIAVEIS GLOBAIS
@@ -244,6 +247,43 @@ char sub_menu_arquivo(){  //submenu do jogo ARQUIVO
 
     return (novo_op2);
 }
+
+char sub_menu_historico(){  //submenu do jogo HISTÓRICO
+    char op2[10]="";
+    int novo_op2;
+
+    system("cls");
+    printf (" \n\t*----------------------------------------------------------------*");
+    printf (" \n\t|                                                                |");
+    printf (" \n\t|                DIGITE A OPCAO DESEJADA                         |");
+    printf (" \n\t|                                                                |");
+    printf (" \n\t|                                                                |");
+    printf (" \n\t|                    0  -  VOLTAR                                |");
+    printf (" \n\t|                                                                |");
+    printf (" \n\t|                    1  -  VISUALISAR HISTORICO                  |");
+    printf (" \n\t|                                                                |");
+    printf (" \n\t|                    2  -  EXCLUIR REGISTRO                      |");
+    printf (" \n\t|                                                                |");
+    printf (" \n\t|                                                                |");
+    printf (" \n\t*-----------------------------------------------------------------*");
+    printf (" \n \n \n                                                          ");
+    scanf("%s", &op2);
+
+    //Tratamento de Erros: Usuário só pode digitar números (sem o programa dar erro)
+    while(isdigit(*op2)==0){
+        printf("\n\n");
+        printf("      \\_(o_o)_/  \n");
+        printf("         | |     \n");
+        printf("         / \\    ");
+        printf("\n\n   VOCE DIGITOU UM CARACTER ");
+        printf("\n\n   Por favor, digite um numero: ");
+        scanf("%s", &op2);
+    }
+    novo_op2=atoi(op2); //Converte caracter para inteiro
+
+    return (novo_op2);
+}
+
 
 //-----------------------------------------------------------------------------------------
 // MODO CONTRA O COMPUTADOR
@@ -889,5 +929,87 @@ void atualiza_lista(){
     contador = cont_linhas;
 
     //Fechando arquivo
+    fclose(hist_jogadas);
+}
+
+
+//Retira elemento da lista
+celula* retira (celula* ini) {
+    int remover;
+
+    celula* ant = NULL; 
+    celula* p = ini;    
+    
+    //Elemento a ser removido
+    system("cls");
+    printf("\n\n   Por favor digite o indice do historico para ser removido: ");
+    scanf("%d",&remover);
+
+    // procura elemento na lista, guardando anterior
+    while (p != NULL && p->contador_struct != remover) {
+        ant = p;
+        p = p->prox;
+    }
+   
+    if (p == NULL) //verifica se achou elemento 
+        return ini; // não achou: retorna lista original
+    
+    //retira elemento
+    if (ant == NULL) {
+        //retira elemento do inicio
+        ini = p->prox;
+    }
+    else {
+        //retira elemento do meio da lista 
+        ant->prox = p->prox;
+    }
+    free(p);
+    atualiza_arquivo_historico(ini);
+    return ini;
+}
+
+
+//Atualiza arquivo historico depois que um item é removido
+void atualiza_arquivo_historico(celula* ini){
+    celula *p;
+    celula *p3;
+    celula *p4;
+    p3 = ini->prox;
+    p4 = ini->prox;
+    int primeira_linha=1;
+
+    //Abrindo arquivo para escrita 
+    FILE *hist_jogadas;
+    hist_jogadas = fopen("arquivos/historico.txt", "w");
+    
+    if(hist_jogadas == NULL) {  
+        printf("\nERRO ao abrir o arquivo de historico\n");  
+    }
+
+    //Percorre a lista encadeada e copia dados para o arquivo historico
+    for (p = ini->prox; p != NULL || p3 != NULL || p4 != NULL; p = p->prox){
+       
+        //converte para string
+        char temp_jogadas[5];
+        sprintf(temp_jogadas, "%d", p->jogadas_struct);
+
+        if (primeira_linha==1){ //Primeira linha não adiciona /n
+            primeira_linha=2;
+        }
+        else{
+            fprintf(hist_jogadas,"\n");
+        }
+        //Preenchendo arquivo no padrão do documento
+        fprintf(hist_jogadas, temp_jogadas);
+        fprintf(hist_jogadas,";");
+        fprintf(hist_jogadas, p3->palavra_struct);
+        fprintf(hist_jogadas,";");
+        fprintf(hist_jogadas, p4->modo_jogo_struct);
+        fprintf(hist_jogadas,";");
+        
+        p3 = p3->prox;
+        p4 = p4->prox; 
+    }
+    
     fclose(hist_jogadas);
 }

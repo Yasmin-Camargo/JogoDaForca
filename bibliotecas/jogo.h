@@ -8,6 +8,7 @@ void como_jogar();
 void desenvolvedores();
 void visualisar_palavras();
 char sub_menu_arquivo();
+char sub_menu_historico();
 void inserir_palavra();
 void sorteador_palavras();
 int modo_contra_pessoa(char palavra_obtida[100], char dica_obtida[100],int modo);
@@ -32,4 +33,6 @@ celula *cria(void);
 void imprime(celula * ini);
 void insere(int jogadas_isere_lista, char palavra_isere_lista[100], int cont_isere_lista, char modo_jogo_isere_lista[100], celula *p, int op_atualiza);
 void atualiza_lista();
+celula* retira (celula* ini);
+void atualiza_arquivo_historico(celula* ini);
 #endif
