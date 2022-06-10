@@ -1,21 +1,28 @@
 #ifndef JOGO_H
 #define JOGO_H
 
+//Funções gerais do Jogo
 void animacao_inicio();
-char menu();
-char sub_menu_iniciar_jogo();
 void como_jogar();
 void desenvolvedores();
-void visualisar_palavras();
+
+//Funções de Menu
+char menu();
+char sub_menu_iniciar_jogo();
 char sub_menu_arquivo();
 char sub_menu_historico();
-void inserir_palavra();
+
+//Funções Arquivo Palavra
 void sorteador_palavras();
+void visualisar_palavras();
+void inserir_palavra();
+void excluir_palavra();
+
+//Funções de jogo
 int modo_contra_pessoa(char palavra_obtida[100], char dica_obtida[100],int modo);
 void percorrer_palavra_secreta();
 void mostra_dica_palavra();
 void mostrar_palavra_secreta();
-void excluir_palavra();
 
 //LISTA ENCADEADA
 struct historico {
@@ -27,12 +34,14 @@ struct historico {
 typedef struct historico celula;
 celula *ini, *pos;
 
-//FUNÇÕES LISTA ENCADEADA
-void lista_encadeada();
+//Funções lista encadeada
 celula *cria(void);
 void imprime(celula * ini);
 void insere(int jogadas_isere_lista, char palavra_isere_lista[100], int cont_isere_lista, char modo_jogo_isere_lista[100], celula *p, int op_atualiza);
+
+//Arquivo + lista encadeada
 void atualiza_lista();
-celula* retira (celula* ini);
 void atualiza_arquivo_historico(celula* ini);
+celula* retira (celula* ini);
+
 #endif

@@ -6,16 +6,15 @@
 #include <stdlib.h>
 #include <Windows.h>
 
-
-void incializacao_boneco();
-void boneco1();
-void boneco2();
-void boneco3();
-void boneco4();
-void boneco5();
-void boneco6();
-void boneco7();
-void boneco8();
+void incializacao_boneco(); //Inicializa variaveis do boneco da forca
+void boneco1(); //Erro 1
+void boneco2(); //Erro 2
+void boneco3(); //Erro 3
+void boneco4(); //Erro 4
+void boneco5(); //Erro 5
+void boneco6(); //Erro 6
+void boneco7(); //Boneco Perdeu
+void boneco8(); //Boneco Ganhou
 
 char *boneco[22], *boneco_limpo[22];
 
