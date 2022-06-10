@@ -753,16 +753,30 @@ void insere(int jogadas_isere_lista, char palavra_isere_lista[100], int cont_ise
 	p->prox = nova;
 	
     //Salvando dados no arquivo (para esses dados não serem perdidos quando fechar o programa)
-    
-    /*
-	hist_jogadas = fopen("./arquivos/historico.txt","a");
-        printf("Historico de Jogadas");
+    if(op_atualiza == 1){
+        //Se for igual a 1 não é preciso gravar no arquivo, pois é a configuração inicial quando se abre o programa
+    }else{
+        //Abrindo arquivo para escrita 
+        FILE *hist_jogadas;
+        hist_jogadas = fopen("arquivos/historico.txt", "a");
+        if(hist_jogadas == NULL) {
+            printf("\nERRO ao abrir o arquivo de historico\n");  
+        }
+
+        //Convertendo número de jogadas para string
+        char temp_jogadas[5];
+        sprintf(temp_jogadas, "%d", jogadas_isere_lista);
+
+        //Preenchendo arquivo no padrão do documento
         fprintf(hist_jogadas,"\n");
-        fprintf(hist_jogadas, "Modo de jogo: %s \n", resultados_modo_jogo);
-        fprintf(hist_jogadas,"Palavra Sorteada: %s\n", resultados_palavra);
-        fprintf(hist_jogadas,"Quantidade de erros: %d\n", resultados_jogadas);
+        fprintf(hist_jogadas,temp_jogadas);
+        fprintf(hist_jogadas,";");
+        fprintf(hist_jogadas,palavra_isere_lista);
+        fprintf(hist_jogadas,";");
+        fprintf(hist_jogadas,modo_jogo_isere_lista);
+        fprintf(hist_jogadas,";");
         fclose(hist_jogadas);
-    */
+    }
 }
 
 //Mostra a Lista Encadeada
@@ -851,13 +865,14 @@ void atualiza_lista(){
             }
             strcpy(resultados_modo_jogo,palavra);
 
-            //Por último as informações são enviadas para inserir na lista encadea
+            /*
             printf("\n Jogadas: .%d.", novo_resultados_jogadas);
             printf("\n Palavra: .%s.", resultados_palavra);
             printf("\n Linha: .%d.", cont_linhas);
             printf("\n Modo escolhido: .%s.\n", resultados_modo_jogo);
+            ´*/
 
-            system("pause");
+            //Por último as informações são enviadas para inserir na lista encadea
             insere(novo_resultados_jogadas,resultados_palavra,cont_linhas,resultados_modo_jogo,ini, op_atualiza);
             strcpy(palavra,"");
 

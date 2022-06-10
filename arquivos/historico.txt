@@ -1,3 +1,7 @@
 2;casa;Modo contra o computador;
 4;bola;Modo contra uma pessoa;
 6;mesa;Modo contra o computador;
+0;a;Modo contra uma pessoa;
+2;onca;Modo contra o computador;
+6;uruguai;Modo contra o computador;
+0;abc;Modo contra uma pessoa;
