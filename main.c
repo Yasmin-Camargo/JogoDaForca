@@ -35,14 +35,27 @@ int main()
 {
     int op_menu, op_menu2, op_menu3;
     
-    system("color 5F");              // CORES Fundo: Branco; Letra: Roxo
-    system("title JOGO DA FORCA");   // Altera o nome da janela
-    setlocale(LC_ALL, "Portuguese"); // habilita a acentuação para o português
+    system("color 5F");                 // CORES Fundo: Branco; Letra: Roxo
+    system("title JOGO DA FORCA");      // Altera o nome da janela
+    setlocale(LC_ALL, "Portuguese");    // habilita a acentuação para o português
 
     animacao_inicio();
+
+    //Verifica se o arquivo histórico existe
+    FILE *hist_jogadas;
+    if (hist_jogadas = fopen("./arquivos/historico.txt", "r")) {
+        fclose(hist_jogadas); 
+        atualiza_lista();
+    } else {
+        fclose(hist_jogadas);  
+        hist_jogadas = fopen("./arquivos/historico.txt","w");  //Cria arquivo
+        fclose(hist_jogadas); 
+    }
+    system("pause");
+    
     do
     {
-        op_menu = menu(); // Opção menu
+        op_menu = menu();   // Opção menu
         switch (op_menu) {
         case 1:
             op_menu2 = 1;
@@ -53,7 +66,6 @@ int main()
                 }
                 else if (op_menu2 == 1) {
                     // Limpando conteúdo das variaveis 
-
                     printf("Digite a palavra secreta: ");
                     fflush(stdin);                          //Limpeza da entrada padrão
                     scanf("%[^\n]s", palavra_enviada);      //Leitura com espaços " "

@@ -30,5 +30,6 @@ celula *ini, *pos;
 void lista_encadeada();
 celula *cria(void);
 void imprime(celula * ini);
-void insere(int jogadas_isere_lista, char palavra_isere_lista[100], int cont_isere_lista, char modo_jogo_isere_lista[100], celula * p);
+void insere(int jogadas_isere_lista, char palavra_isere_lista[100], int cont_isere_lista, char modo_jogo_isere_lista[100], celula *p, int op_atualiza);
+void atualiza_lista();
 #endif
