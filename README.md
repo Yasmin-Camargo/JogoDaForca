@@ -10,6 +10,8 @@ Programa em c desenvolvido como forma de avaliação da disciplina de Programaç
     
     gcc main.c ./bibliotecas/boneco_forca.c ./bibliotecas/jogo.c -o main
     
+##  Layout do projeto
+![image](https://user-images.githubusercontent.com/88253809/173165803-f5d7b8b8-3c55-4b6a-a594-e0bc7b8ebddd.png)
 
 ## Observações Arquivo Palavras:
 O aquivo arq_palavras.txt deve possuir a seguinte estrutura: 
