@@ -9,8 +9,9 @@ Programa em c desenvolvido como forma de avaliação da disciplina de Programaç
 -> Para executar o código não esquecer de compilar pelo terminal: 
     
     gcc main.c ./bibliotecas/boneco_forca.c ./bibliotecas/jogo.c -o main
+    
 
-## Atenção:
+## Obsevações Arquivo Palavras:
 O aquivo arq_palavras.txt deve possuir a seguinte estrutura: 
 - Deve conter apenas letras minúsculas
 - As palavras não deverão ser acentuadas 
@@ -21,4 +22,9 @@ O aquivo arq_palavras.txt deve possuir a seguinte estrutura:
     castanho avermelhado;cor;
     liquidificador;objeto;
 
+
+## Caracteríscas
+- Utilização de bibliotecas próprias
+- Manipulação de Arquivos
+- Listas encadeadas
 
