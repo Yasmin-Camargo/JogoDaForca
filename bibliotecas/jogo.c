@@ -245,7 +245,6 @@ char sub_menu_historico(){  //submenu do jogo HISTÓRICO
     return (novo_op2);
 }
 
-
 char sub_menu_arquivo(){  //submenu do jogo ARQUIVO
     char op2[10]="";
     int novo_op2;
@@ -286,8 +285,7 @@ char sub_menu_arquivo(){  //submenu do jogo ARQUIVO
 
 //-----------------------------------------------------------------------------------------
 // MODO CONTRA O COMPUTADOR
-void sorteador_palavras()
-{ // Sorteia uma palavra aleatória de um arquivo
+void sorteador_palavras(){ // Sorteia uma palavra aleatória de um arquivo
     char caractere = 'a', temp[100];
     int quantidade_linhas = 1, verificando_linha = 1, linha_sorteada = 0;
 
@@ -642,8 +640,7 @@ void mostrar_palavra_secreta(){
     }
 }
 
-void percorrer_palavra_secreta()
-{
+void percorrer_palavra_secreta(){
     int gravar=1;
     char aux[3];
 
@@ -737,8 +734,7 @@ void mostra_dica_palavra(){ //Mostra a dica e a palavra na tela
 //FUNÇÕES LISTA ENCADEADA
 
 //Cria a Lista encadeada
-celula *cria(void)
-{
+celula *cria(void){
 	celula *start;
 
 	start = (celula *) malloc(sizeof(celula));
