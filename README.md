@@ -4,6 +4,9 @@ Programa em c desenvolvido como forma de avaliação da disciplina de Programaç
 <b> DESENVOLVIDO POR: </b>
 <br>
     BIANCA BEPPLER DULLIUS, CAROLINE SOUZA CAMARGO, MARIA JULIA DUARTE LORENZONI E YASMIN SOUZA CAMARGO
+    
+![image](https://user-images.githubusercontent.com/88253809/173382368-b65d8655-38d2-4f34-b86a-4b4b465c04c1.png)
+
 
 ## Como Executar
 -> Para executar o código não esquecer de compilar pelo terminal: 
@@ -11,7 +14,7 @@ Programa em c desenvolvido como forma de avaliação da disciplina de Programaç
     gcc main.c ./bibliotecas/boneco_forca.c ./bibliotecas/jogo.c -o main
     
 ##  Layout do projeto
-![image](https://user-images.githubusercontent.com/88253809/173165803-f5d7b8b8-3c55-4b6a-a594-e0bc7b8ebddd.png)
+![image](https://user-images.githubusercontent.com/88253809/173381773-f8a9146e-c020-4409-be51-295e3fa3c752.png)
 
 ## Observações Arquivo Palavras:
 O aquivo arq_palavras.txt deve possuir a seguinte estrutura: 
