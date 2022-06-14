@@ -5,7 +5,8 @@ Programa em c desenvolvido como forma de avaliação da disciplina de Programaç
 <br>
     BIANCA BEPPLER DULLIUS, CAROLINE SOUZA CAMARGO, MARIA JULIA DUARTE LORENZONI E YASMIN SOUZA CAMARGO
     
-![image](https://user-images.githubusercontent.com/88253809/173382368-b65d8655-38d2-4f34-b86a-4b4b465c04c1.png)
+![image](https://user-images.githubusercontent.com/88253809/173589921-4ba52b9e-4462-442b-8ced-f53d03119717.png)
+
 
 
 ## Como Executar
@@ -14,7 +15,8 @@ Programa em c desenvolvido como forma de avaliação da disciplina de Programaç
     gcc main.c ./bibliotecas/boneco_forca.c ./bibliotecas/jogo.c -o main
     
 ##  Layout do projeto
-![image](https://user-images.githubusercontent.com/88253809/173381773-f8a9146e-c020-4409-be51-295e3fa3c752.png)
+![image](https://user-images.githubusercontent.com/88253809/173591531-c9705b1f-78a5-4fda-b675-8f1c0ca5681a.png)
+
 
 ## Observações Arquivo Palavras:
 O aquivo arq_palavras.txt deve possuir a seguinte estrutura: 
@@ -42,3 +44,8 @@ O aquivo historico.txt deve possuir a seguinte estrutura:
 - Manipulação de Arquivos
 - Listas encadeadas
 
+![image](https://user-images.githubusercontent.com/88253809/173590236-b2cad7da-e4fc-4f5d-b0d6-a715b7de2e1b.png)
+
+![image](https://user-images.githubusercontent.com/88253809/173591172-904b8f76-7537-47c3-a924-af419076bf3a.png)
+
+![image](https://user-images.githubusercontent.com/88253809/173590337-247df393-8d93-4dca-8b73-e808dd607bcb.png)
