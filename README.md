@@ -15,7 +15,7 @@ Programa em c desenvolvido como forma de avaliação da disciplina de Programaç
     gcc main.c ./bibliotecas/boneco_forca.c ./bibliotecas/jogo.c -o main
     
 ##  Layout do projeto
-![image](https://user-images.githubusercontent.com/88253809/173591531-c9705b1f-78a5-4fda-b675-8f1c0ca5681a.png)
+![image](https://user-images.githubusercontent.com/88253809/173595237-70a55002-0650-4d4f-a4f7-b5fb902d233b.png)
 
 
 ## Observações Arquivo Palavras:
